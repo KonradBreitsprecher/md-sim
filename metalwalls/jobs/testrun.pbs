@@ -1,0 +1,18 @@
+#!/bin/bash
+#PBS -N CDC_TEST4
+#PBS -l nodes=4:ppn=24
+#PBS -l walltime=01:00:00 
+
+JOB="CDC_TEST4"
+INPUTDIR="$HOME/metalwalls/cdc/inputfiles/testrun"
+DATADIR="$HOME/data/$JOB"
+METALWALLS="$HOME/src/metalwalls"
+
+mkdir -p $DATADIR/
+cd $DATADIR
+rm *out* testout*
+
+cp $INPUTDIR/potential.inpt $INPUTDIR/restart.dat $INPUTDIR/runtime.inpt ./
+
+#-j 2 enables Hyperthreading
+aprun -n 96 -N 24 $HOME/src/metalwalls/bin/metalwalls.exe

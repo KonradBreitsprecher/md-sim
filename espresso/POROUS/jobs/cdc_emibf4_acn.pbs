@@ -1,0 +1,11 @@
+#!/bin/bash
+#PBS -N CDC_TEST_ESPR_ICC
+#PBS -l nodes=1:ppn=24
+#PBS -l walltime=01:10:00 
+
+JOB="CDC_TEST_ESPR_ICC"
+DATADIR="$HOME/data/$JOB"
+
+mkdir -p $DATADIR/
+
+aprun -n 24 -N 24 $HOME/git/espresso_git/build/Espresso $HOME/git/sim_scripts/POROUS/cdc_emibf4_acn.tcl 0 $HOME/git/sim_scripts/POROUS/CDC_Border.dat $DATADIR $HOME/git/sim_scripts/POROUS/checkpoint_pot_0.dat

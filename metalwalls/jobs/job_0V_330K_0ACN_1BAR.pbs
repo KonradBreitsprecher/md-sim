@@ -1,0 +1,17 @@
+#!/bin/bash
+#PBS -N CDC_EQUIRUN_T_L
+#PBS -l nodes=50:ppn=24
+#PBS -l walltime=24:00:00 
+
+JOB="0V_330K_0ACN_1BAR_Z235_L"
+INPUTDIR="$HOME/metalwalls/cdc/inputfiles/EMIBF4-ACN/0V_330K_0ACN_1BAR"
+DATADIR="$HOME/data/$JOB"
+
+mkdir -p $DATADIR/
+cd $DATADIR
+rm *out* testout*
+
+cp $INPUTDIR/potential.inpt $INPUTDIR/restart.dat $INPUTDIR/runtime.inpt ./
+
+#-j 2 enables Hyperthreading
+aprun -n 1200 -N 24 $HOME/src/metalwalls/bin/metalwalls.exe

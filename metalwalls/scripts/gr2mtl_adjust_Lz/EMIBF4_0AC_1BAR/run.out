@@ -1,0 +1,22 @@
+                Metal Walls Pim
+ built
+         Built: 2015-02-18 13:46:34.089853
+         
+         No local modification
+         On machine: 
+         With environment:
+         /bin/sh: module: command not found
+
+        Now includes corrections from
+        Todd Gingrich's master thesis
+        and a predictor step for the RIM
+        Now includes the possibility of having
+        constant potential and constant charge species together
+        Does not write displacements and velocities for fixed species
+        Code optimized for memory use
+        Now includes linear molecules with 3 sites
+        MH: reduced memory footprint and vectorization
+
+
+ opening readin file
+ Fatal error,            2 : Problem opening the file runtime.inpt
