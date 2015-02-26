@@ -19,5 +19,5 @@ git pull hornet
 #from github
 git pull origin
 
-#..on hornet
-#--> NOT WORKING, use PUSH to hornet
+#..on hornet, after push from client
+git pull
