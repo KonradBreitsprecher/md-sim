@@ -20,4 +20,4 @@ git pull hornet
 git pull origin
 
 #..on hornet
-#--> NOT WORKING, use PUSH to hornet
+git pull
