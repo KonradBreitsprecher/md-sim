@@ -671,22 +671,22 @@ if {$useCheckpoint == "no" } {
 
 #-----------------------
 puts "\n-->Starting integration"
-#-----------------------
 
 set n_step 100
 
 #kg/m^3 to g/(mol*A^3)
 set dens_aim [expr 1270.0 * 6.022141e-4]
-set bulk_w 40
+set bulk_w [expr $box_z - 2.0*$cdc_w - 10.0]
+set fillF 2
 
-set bulk_w2 [expr $bulk_w * 0.5] 
-set ori_z [expr $gapL + $box_z * 0.5]
+set apply_mf_cnt 0 
+puts "---> Moses forces ON"
 
 #INITAL DENSITY
 set M 0
 for {set i $iccParticles} { $i < [expr 5*$n_ion + $iccParticles] } {incr i} {
 	set z [lindex [part $i print pos] 2] 
-	if { $z > [expr $gapL + $cdc_w]  && $z < [expr $gapL + $box_z - $cdc_w] } {
+	if { $z > [expr $gapL + $box_z*0.5 - 0.5*$bulk_w] && $z < [expr $gapL + $box_z*0.5 + 0.5*$bulk_w] } {
 		set M [expr $M + [part $i print mass]]
 	}
 }
@@ -701,11 +701,54 @@ while {1} {
 
 	integrate 100
 
+#	if {$apply_mf_cnt < 10} {
+#		incr apply_mf_cnt
+#		#MOSES FORCE
+#		for {set i $iccParticles} { $i < [expr $n_ion + $iccParticles] } {incr i} {
+#			set z [lindex [part $i print pos] 2] 
+#			if {$z > [expr $gapL + 0.5*$box_z]} {
+#				set Fsign 1.0
+#			} else {
+#				set Fsign -1.0
+#			}
+#			part $i ext_force 0 0 [expr $Fsign * $fillF]
+#		}
+#		for {set j $i} { $j < [expr 5*$n_ion + $iccParticles] } {incr j 4} {
+#			set z [lindex [part $j print pos] 2] 
+#			if {$z > [expr $gapL + 0.5*$box_z]} {
+#				set Fsign 1.0
+#			} else {
+#				set Fsign -1.0
+#			}
+#			part [expr $j+1] ext_force 0 0 [expr $Fsign * $fillF]
+#			part [expr $j+2] ext_force 0 0 [expr $Fsign * $fillF]
+#			part [expr $j+3] ext_force 0 0 [expr $Fsign * $fillF]
+#		}
+#		if {$apply_mf_cnt == 10} { 
+#			puts "---> Moses forces OFF"
+#		}
+#	} else {
+#		incr apply_mf_cnt
+#		if {$apply_mf_cnt > 20} { 
+#			set md_time [setmd time]
+#			set md_time_ps [expr $time_scale * [setmd time]*1000]
+#			set out [open "$path/checkpoint_t_[format %.2f $md_time_ps]ps" "w"]
+#			blockfile $out write tclvariable "md_time restarts"
+#			blockfile $out write particles "pos v f" $anionList
+#			blockfile $out write particles "pos quat v f" $cationComList
+#			blockfile $out write particles "pos v f" $cationList
+#			close $out
+#
+#			set apply_mf_cnt 0
+#			puts "---> Moses forces ON, writing checkpoint"
+#
+#		 }
+#	}	
 	#BULK DENSITY
 	set M 0
 	for {set i $iccParticles} { $i < [expr 5*$n_ion + $iccParticles] } {incr i} {
 		set z [lindex [part $i print pos] 2] 
-		if { $z > [expr $gapL + $cdc_w] && $z < [expr $gapL + $box_z - $cdc_w] } {
+		if { $z > [expr $gapL + $box_z*0.5 - 0.5*$bulk_w] && $z < [expr $gapL + $box_z*0.5 + 0.5*$bulk_w] } {
 			set M [expr $M + [part $i print mass]]
 		}
 	}
@@ -745,65 +788,6 @@ while {1} {
 	puts "Cation cnts: Left CDC: $num_Cions_in_cdcL   Bulk: $num_Cions_in_bulk   Right CDC: $num_Cions_in_cdcR"
 	puts "Total cnts:  Left CDC: [expr $num_Cions_in_cdcL+$num_Aions_in_cdcL]   Bulk: [expr $num_Cions_in_bulk+$num_Aions_in_bulk]   Right CDC: [expr $num_Cions_in_cdcR+$num_Aions_in_cdcR]"
 	puts "Runnung avg. density: [format %.4f $dens_avg_rn]  Target density: [format %.4f $dens_aim]   Change: [format %.8f [expr $dens_avg_rn-$dens_avg_rn_old]]"
-
-	if {$d_dens_avg < 0.00001} {
-		
-		set dL [expr $bulk_w * ($dens_avg_rn/$dens_aim - 1.0)]		
-		puts "------->Change boxsize $box_z by $dL to [expr $box_z+$dL]" 
-
-		#puts "ADJUST SYSTEM SIZE"
-		set box_z_old $box_z
-		set box_z [expr $box_z+$dL]
-		#set box_z_tot [expr 2.0*$gap+$box_z]
-		set ori_z [expr $gapL+$box_z *0.5]
-		#setmd box_l $box_x $box_y $box_z_tot
-		
-		#puts "RESET CONSTRAINTS"
-		constraint delete 
-		constraint wall normal 0 0 1 dist $gapL type $wall_type
-		constraint wall normal 0 0 -1 dist [expr -$box_z-$gapL] type $wall_type
-
-		#puts "RESET RIGHT CDC BORDER"
-		set cdcShiftRight [expr $gapL + $box_z - $au_to_angs * $cdc_maxz] 
-		for {set j [expr $iccParticles/2]} {$j < $iccParticles} {incr j} {
-		    set c [lindex $cdc_coords $j]
-		    part $j pos [expr $au_to_angs * [lindex $c 0]] [expr $au_to_angs * [lindex $c 1]] [expr $cdcShiftRight + $au_to_angs * [lindex $c 2]]
-		}
-
-		#puts "SHIFT IONS"
-		for {set i $iccParticles} { $i < [expr 5*$n_ion + $iccParticles] } {incr i} {
-			set z [lindex [part $i print pos] 2] 
-			if {$z > [expr $gapL + $box_z_old - $cdc_w]} {
-				#puts "SHIFT IONS INSIDE RIGHT CDC-BODER"
-				set ppos [part $i print pos]
-				part $i pos [lindex $ppos 0] [lindex $ppos 1] [expr [lindex $ppos 2] + $dL] 
-			} elseif { $z > [expr $gapL + $cdc_w] } {
-			        #puts "SHIFT BULK IONS ACCORDING TO POSITION"
-				set ppos [part $i print pos]
-				set newz [expr [lindex $ppos 2] + $dL*($z-($gapL + $cdc_w))/($box_z_old - 2.0*$cdc_w)]
-				#puts "Adjusting bulk ion from [lindex $ppos 2] to $newz"
-				part $i pos [lindex $ppos 0] [lindex $ppos 1] $newz 
-			}
-		}
-
-		puts "Retune p3m"
-		inter coulomb $l_b p3m tune accuracy 1e-4 mesh 64 r_cut 0 cao 0
-		#puts "INTEGRATE 10"
-		integrate 10
-			
-		puts "Write checkpoint"		
-		set md_time [setmd time]
-		set md_time_ps [expr $time_scale * [setmd time]*1000]
-		set out [open "$path/checkpoint_t_[format %.2f $md_time_ps]ps" "w"]
-		blockfile $out write tclvariable "md_time restarts"
-		blockfile $out write particles "pos v f" $anionList
-		blockfile $out write particles "pos quat v f" $cationComList
-		blockfile $out write particles "pos v f" $cationList
-		close $out
-		
-	}
-
-
 	
 	#Measurements
 	set md_time_ns [expr $time_scale * [setmd time]]
