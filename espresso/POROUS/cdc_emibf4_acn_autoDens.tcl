@@ -11,7 +11,7 @@ puts "$startMsgB\n$startMsgB\n\n$startMsg\n\n$startMsgB\n$startMsgB"
 set start_time [expr 1.0*[clock clicks -milliseconds]]
 
 #Real runtime
-set hours 0.08
+set hours 7.5
 set wall_time [expr $hours*3600.0]
 
 #Seed
@@ -53,10 +53,11 @@ file mkdir $path
 
 set box_x 43.336
 set box_y 43.336
-set box_z 150.0 
+set box_z 134.277 
 #set box_z 185.741
-set gap 10
-set box_z_tot [expr 2.0*$gap+$box_z]
+set gapL 5
+set gapR 100
+set box_z_tot [expr $gapL+$gapR+$box_z]
 
 setmd box_l $box_x $box_y $box_z_tot
 setmd periodic 1 1 1
@@ -242,7 +243,7 @@ puts "\nOutput path:          $path"
 puts "Timestep (fs):          $time_step_fs"
 puts "Voltage (V):            $UBat_V"
 puts "Number of ion pairs:    $n_ion"
-puts "box x y z (A):          [format %.2f $box_x] [format %.2f $box_y] [format %.2f $box_z]+2*$gap"
+puts "box x y z (A):          [format %.2f $box_x] [format %.2f $box_y] [format %.2f $box_z]+$gapL+$gapR"
 puts "Bjerrum length (A):     $l_b"
 puts "Temperature (K):        $SI_temperature"
 puts "Output Path:            $path"
@@ -279,16 +280,22 @@ set iccParticlesLeft [expr int($iccParticles/2)]
 #LEFT CDC BORDER
 for {set i 0} {$i < [expr $iccParticles/2]} {incr i} {
     set c [lindex $cdc_coords $i]
-    part $i pos [expr $au_to_angs * [lindex $c 0]] [expr $au_to_angs * [lindex $c 1]] [expr $gap + $au_to_angs * [lindex $c 2]] 
+    part $i pos [expr $au_to_angs * [lindex $c 0]] [expr $au_to_angs * [lindex $c 1]] [expr $gapL + $au_to_angs * [lindex $c 2]] 
 }
 
 #RIGHT CDC BORDER
-set cdcShiftRight [expr $gap + $box_z - $au_to_angs * $cdc_maxz] 
+set cdc_minzR $cdc_maxz
+set cdcShiftRight [expr $gapL + $box_z - $au_to_angs * $cdc_maxz] 
 for {set j $i} {$j < $iccParticles} {incr j} {
     set c [lindex $cdc_coords $j]
-    part $j pos [expr $au_to_angs * [lindex $c 0]] [expr $au_to_angs * [lindex $c 1]] [expr $cdcShiftRight + $au_to_angs * [lindex $c 2]]
+    set cz [lindex $c 2]
+    part $j pos [expr $au_to_angs * [lindex $c 0]] [expr $au_to_angs * [lindex $c 1]] [expr $cdcShiftRight + $au_to_angs * $cz]
+    if {$cdc_minzR > $cz} {
+        set cdc_minzR $cz
+    }
 }
-
+set cdc_w [expr $au_to_angs*($cdc_maxz - $cdc_minzR)]
+puts "CDC-Width: $cdc_w"
 #WRITE SEPERATE STRUCTURE+COORDS FOR ICC PARTICLES ON FIRST RUN
 #if {$useCheckpoint == "no" } {
 #	set obs_traj_icc [open "$path/trajectory_ICC.vtf" "w"]
@@ -332,8 +339,8 @@ for {set i 0} {$i < $iccParticles} {incr i} {
 #---------------------------BORDERS----------------------------------
 #---------------------------------------------------------
 
-constraint wall normal 0 0 1 dist $gap type $wall_type
-constraint wall normal 0 0 -1 dist [expr -$box_z-$gap] type $wall_type
+constraint wall normal 0 0 1 dist $gapL type $wall_type
+constraint wall normal 0 0 -1 dist [expr -$box_z-$gapL] type $wall_type
 
 #---------------------------------------------------------
 #-------------------------CREATE IONS---------------------------------
@@ -351,7 +358,7 @@ set partMargin 50
 for {set i $iccParticles} { $i < [expr $n_ion + $iccParticles] } {incr i} {
     set posx [expr $box_x*[t_random]]
     set posy [expr $box_y*[t_random]]
-    set posz [expr $gap + ($box_z-2*$partMargin)*[t_random]+$partMargin]
+    set posz [expr $gapL + ($box_z-2*$partMargin)*[t_random]+$partMargin]
 
     part $i pos $posx $posy $posz q $q_a type $a_type mass $m_a
     lappend anionlist $i
@@ -362,7 +369,7 @@ for {set i $iccParticles} { $i < [expr $n_ion + $iccParticles] } {incr i} {
 for {set j $i} { $j < [expr 5*$n_ion + $iccParticles] } {incr j 4} {
     set posx [expr $box_x*[t_random]]
     set posy [expr $box_y*[t_random]]
-    set posz [expr $gap + ($box_z-2*$partMargin)*[t_random]+$partMargin]
+    set posz [expr $gapL + ($box_z-2*$partMargin)*[t_random]+$partMargin]
     
     part $j pos $posx $posy $posz type $com_type rinertia $cat_inertia_xx $cat_inertia_yy $cat_inertia_zz mass $m_ctot omega [expr 2*[t_random]-1] [expr 2*[t_random]-1] [expr 2*[t_random]-1]
     part [expr $j +1] pos $posx [expr $posy + $c1_y] [expr $posz + $c1_z] type $c1_type virtual 1 q $q_c1 vs_auto_relate_to $j vs_relative $j [expr sqrt(pow($c1_y,2)+pow($c1_z,2))] 
@@ -593,43 +600,42 @@ for {set j $i} { $j < [expr 5*$n_ion + $iccParticles] } {incr j 4} {
 puts "-->Init observables"
 #-----------------------
 
-set obs_anion_pos_id [observable new density_profile type [list $a_type] minx 0 maxx $box_x xbins 1 miny 0 maxy $box_y ybins 1 minz 0 maxz $box_z zbins $nbins]
-set obs_cation_pos_id [observable new density_profile type [list $com_type] minx 0 maxx $box_x xbins 1 miny 0 maxy $box_y ybins 1 minz 0 maxz $box_z zbins $nbins]
-set obs_cation_c1_id [observable new density_profile type [list $c1_type] minx 0 maxx $box_x xbins 1 maxy $box_y ybins 1 minz 0 maxz $box_z zbins $nbins]
-set obs_cation_c2_id [observable new density_profile type [list $c2_type] minx 0 maxx $box_x xbins 1 maxy $box_y ybins 1 minz 0 maxz $box_z zbins $nbins]
-set obs_cation_c3_id [observable new density_profile type [list $c3_type] minx 0 maxx $box_x xbins 1 maxy $box_y ybins 1 minz 0 maxz $box_z zbins $nbins]
-
-set sampleTime [expr 3*$time_step]
-set tauMax [expr 2*$sampleTime]
-set corr_anion_pos_id [correlation new obs1 $obs_anion_pos_id tau_max $tauMax dt $sampleTime compress1 discard1 corr_operation componentwise_product]
-set corr_cation_pos_id [correlation new obs1 $obs_cation_pos_id tau_max $tauMax dt $sampleTime compress1 discard1 corr_operation componentwise_product]
-set corr_cation_c1_id [correlation new obs1 $obs_cation_c1_id tau_max $tauMax dt $sampleTime compress1 discard1 corr_operation componentwise_product]
-set corr_cation_c2_id [correlation new obs1 $obs_cation_c2_id tau_max $tauMax dt $sampleTime compress1 discard1 corr_operation componentwise_product]
-set corr_cation_c3_id [correlation new obs1 $obs_cation_c3_id tau_max $tauMax dt $sampleTime compress1 discard1 corr_operation componentwise_product]
-
-if {$useCheckpoint =="yes"} {
-	puts "\n-->Read correlator checkpoint"
-	correlation $corr_anion_pos_id read_checkpoint_binary "$path/corr_anion.bin"
-	correlation $corr_cation_pos_id read_checkpoint_binary "$path/corr_cation_com.bin"
-	correlation $corr_cation_c1_id read_checkpoint_binary "$path/corr_cation_c1.bin"
-	correlation $corr_cation_c2_id read_checkpoint_binary "$path/corr_cation_c2.bin"
-	correlation $corr_cation_c3_id read_checkpoint_binary "$path/corr_cation_c3.bin"
-}
-
-correlation $corr_anion_pos_id autoupdate start
-correlation $corr_cation_pos_id autoupdate start
-correlation $corr_cation_c1_id autoupdate start
-correlation $corr_cation_c2_id autoupdate start
-correlation $corr_cation_c3_id autoupdate start
+#set obs_anion_pos_id [observable new density_profile type [list $a_type] minx 0 maxx $box_x xbins 1 miny 0 maxy $box_y ybins 1 minz 0 maxz $box_z zbins $nbins]
+#set obs_cation_pos_id [observable new density_profile type [list $com_type] minx 0 maxx $box_x xbins 1 miny 0 maxy $box_y ybins 1 minz 0 maxz $box_z zbins $nbins]
+#set obs_cation_c1_id [observable new density_profile type [list $c1_type] minx 0 maxx $box_x xbins 1 maxy $box_y ybins 1 minz 0 maxz $box_z zbins $nbins]
+#set obs_cation_c2_id [observable new density_profile type [list $c2_type] minx 0 maxx $box_x xbins 1 maxy $box_y ybins 1 minz 0 maxz $box_z zbins $nbins]
+#set obs_cation_c3_id [observable new density_profile type [list $c3_type] minx 0 maxx $box_x xbins 1 maxy $box_y ybins 1 minz 0 maxz $box_z zbins $nbins]
+#
+#set sampleTime [expr 3*$time_step]
+#set tauMax [expr 2*$sampleTime]
+#set corr_anion_pos_id [correlation new obs1 $obs_anion_pos_id tau_max $tauMax dt $sampleTime compress1 discard1 corr_operation componentwise_product]
+#set corr_cation_pos_id [correlation new obs1 $obs_cation_pos_id tau_max $tauMax dt $sampleTime compress1 discard1 corr_operation componentwise_product]
+#set corr_cation_c1_id [correlation new obs1 $obs_cation_c1_id tau_max $tauMax dt $sampleTime compress1 discard1 corr_operation componentwise_product]
+#set corr_cation_c2_id [correlation new obs1 $obs_cation_c2_id tau_max $tauMax dt $sampleTime compress1 discard1 corr_operation componentwise_product]
+#set corr_cation_c3_id [correlation new obs1 $obs_cation_c3_id tau_max $tauMax dt $sampleTime compress1 discard1 corr_operation componentwise_product]
+#
+#if {$useCheckpoint =="yes"} {
+#	puts "\n-->Read correlator checkpoint"
+#	correlation $corr_anion_pos_id read_checkpoint_binary "$path/corr_anion.bin"
+#	correlation $corr_cation_pos_id read_checkpoint_binary "$path/corr_cation_com.bin"
+#	correlation $corr_cation_c1_id read_checkpoint_binary "$path/corr_cation_c1.bin"
+#	correlation $corr_cation_c2_id read_checkpoint_binary "$path/corr_cation_c2.bin"
+#	correlation $corr_cation_c3_id read_checkpoint_binary "$path/corr_cation_c3.bin"
+#}
+#
+#correlation $corr_anion_pos_id autoupdate start
+#correlation $corr_cation_pos_id autoupdate start
+#correlation $corr_cation_c1_id autoupdate start
+#correlation $corr_cation_c2_id autoupdate start
+#correlation $corr_cation_c3_id autoupdate start
 
 set obs_traj [open "$path/trajectory.vtf" "a"]
 set obs_energy [open "$path/energy.dat" "a"]
 
-#Write structure+icc coords on first run 
+#Write structure on first run 
 if {$useCheckpoint == "no" } {
 	puts "\n-->Writing structure data to $path/trajectory.vtf"
 	writevsf $obs_traj short radius [list 0 [expr $lj_sig_w*0.5] 1 auto 2 auto 3 auto 4 auto 5 auto] typedesc {0 "name ICC type 0" 1 "name EMIM_C1_IM type 1" 2 "name EMIM_C2_ME type 2" 3 "name EMIM_C3_ET type 3" 4 "name EMIM_COM type 4" 5 "name BF4 type 5"}
-	writevcf $obs_traj short folded pids $icclist
 }
 
 #-----------------------
@@ -638,62 +644,113 @@ puts "\n-->Starting integration"
 
 set n_step 100
 
+#kg/m^3 to g/(mol*A^3)
 set dens_aim [expr 1270.0 * 6.022141e-4]
 set bulk_w 40
 
 set dens_avg_cnt 0 
 set sum_dens 0
 set bulk_w2 [expr $bulk_w * 0.5] 
-set ori_z [$box_z_tot *0.5]
+set ori_z [expr $gapL + $box_z * 0.5]
 
 #INITAL DENSITY
 set M 0
+set num_ions_in_cdcL 0
+set num_ions_in_cdcR 0
+set num_ions_in_bulk 0
 for {set i $iccParticles} { $i < [expr 5*$n_ion + $iccParticles] } {incr i} {
 	set z [lindex [part $i print pos] 2] 
-	if {$z > $ori_z - $bulk_w2 && $z < $ori_z + $bulk_w2 } {
-		 set M [expr $M + [part $i print mass]]
+	if {$z > [expr $gapL + $box_z - $cdc_w]} {
+		incr num_ions_in_cdcR
+	} elseif { $z > [expr $gapL + $cdc_w] } {
+		set M [expr $M + [part $i print mass]]
+		incr num_ions_in_bulk
+	} else {
+		incr num_ions_in_cdcL
 	}
 }
-set dens_avg_old [expr $M / ($box_x*$box_y*$bulk_w)]
+set dens_avg_rn [expr $M / ($box_x*$box_y*$bulk_w)]
+set ni_cdcL_avg_rn $num_ions_in_cdcL
+set ni_cdcR_avg_rn $num_ions_in_cdcR
+set ni_bulk_avg_rn $num_ions_in_bulk
 
 while {1} {
 
-	imd positions
+	#imd positions
 	
-	#Trajectory IONS
-	writevcf $obs_traj short folded pids $ionlist
+	#Trajectory All
+	writevcf $obs_traj short folded
 
-	#Integrate
 	integrate $n_step
 
-	#Calc bulk density
 	set M 0
+	set num_ions_in_cdcL 0
+	set num_ions_in_cdcR 0
+	set num_ions_in_bulk 0
 	for {set i $iccParticles} { $i < [expr 5*$n_ion + $iccParticles] } {incr i} {
 		set z [lindex [part $i print pos] 2] 
-		if {$z > $ori_z - $bulk_w2 && $z < $ori_z + $bulk_w2 } {
-			 set M [expr $M + [part $i print mass]]
+		if {$z > [expr $gapL + $box_z - $cdc_w]} {
+			incr num_ions_in_cdcR
+		} elseif { $z > [expr $gapL + $cdc_w] } {
+			set M [expr $M + [part $i print mass]]
+			incr num_ions_in_bulk
+		} else {
+			incr num_ions_in_cdcL
 		}
 	}
 	set dens [expr $M / ($box_x*$box_y*$bulk_w)]
-	set sum_dens [expr $sum_dens + $dens]
-	incr dens_avg_cnt 
+	set dens_avg_rn_old $dens_avg_rn
+	set dens_avg_rn [expr $dens_avg_rn * 0.9 + 0.1 * $dens]
+	set d_dens_avg [expr abs($dens_avg_rn-$dens_avg_rn_old)]
 
-	set dens_avg [expr $sum_dens / $dens_avg_cnt]
-	set d_dens_avg [$dens_avg-$dens_avg_old]
+	puts "Runnung avg. density: [format %.4f $dens_avg_rn]  Target density: [format %.4f $dens_aim]   Change: [format %.8f [expr $dens_avg_rn-$dens_avg_rn_old]]"
+	puts "Ion cnts: Left CDC: $num_ions_in_cdcL   Bulk: $num_ions_in_bulk   Right CDC: $num_ions_in_cdcR"
 
-	if {$d_dens_avg < 0.1} {
-		set sum_dens 0
-		set dens_avg_cnt 0
-		set dens_avg_old $dens_avg 
+	if {$d_dens_avg < 0.00001} {
+		
+		set dL [expr $bulk_w * ($dens_avg_rn/$dens_aim - 1.0)]		
+		puts "------->Change boxsize $box_z by $dL to [expr $box_z+$dL]" 
 
-		set dL [expr $bulk_w * ($dens_avg/$dens_aim - 1.0)]		
+		#puts "ADJUST SYSTEM SIZE"
+		set box_z_old $box_z
+		set box_z [expr $box_z+$dL]
+		#set box_z_tot [expr 2.0*$gap+$box_z]
+		set ori_z [expr $gapL+$box_z *0.5]
+		#setmd box_l $box_x $box_y $box_z_tot
+		
+		#puts "RESET CONSTRAINTS"
+		constraint delete 
+		constraint wall normal 0 0 1 dist $gapL type $wall_type
+		constraint wall normal 0 0 -1 dist [expr -$box_z-$gapL] type $wall_type
 
-		#ADJUST SYSTEM SIZE
-		set box_z [$box_z+$dL]
-		set box_z_tot [expr 2.0*$gap+$box_z]
-		setmd box_l $box_x $box_y $box_z_tot
+		#puts "RESET RIGHT CDC BORDER"
+		set cdcShiftRight [expr $gapL + $box_z - $au_to_angs * $cdc_maxz] 
+		for {set j [expr $iccParticles/2]} {$j < $iccParticles} {incr j} {
+		    set c [lindex $cdc_coords $j]
+		    part $j pos [expr $au_to_angs * [lindex $c 0]] [expr $au_to_angs * [lindex $c 1]] [expr $cdcShiftRight + $au_to_angs * [lindex $c 2]]
+		}
 
-		constraint wall normal 0 0 -1 dist [expr -$box_z-$gap] type $wall_type
+		#puts "SHIFT IONS"
+		for {set i $iccParticles} { $i < [expr 5*$n_ion + $iccParticles] } {incr i} {
+			set z [lindex [part $i print pos] 2] 
+			if {$z > [expr $gapL + $box_z_old - $cdc_w]} {
+				#puts "SHIFT IONS INSIDE RIGHT CDC-BODER"
+				set ppos [part $i print pos]
+				part $i pos [lindex $ppos 0] [lindex $ppos 1] [expr [lindex $ppos 2] + $dL] 
+			} elseif { $z > [expr $gapL + $cdc_w] } {
+			        #puts "SHIFT BULK IONS ACCORDING TO POSITION"
+				set ppos [part $i print pos]
+				set newz [expr [lindex $ppos 2] + $dL*($z-($gapL + $cdc_w))/($box_z_old - 2.0*$cdc_w)]
+				#puts "Adjusting bulk ion from [lindex $ppos 2] to $newz"
+				part $i pos [lindex $ppos 0] [lindex $ppos 1] $newz 
+			}
+		}
+
+		puts "Retune p3m"
+		inter coulomb $l_b p3m tune accuracy 1e-4 mesh 64 r_cut 0 cao 0
+		#puts "INTEGRATE 10"
+		integrate 10
+		
 	}	
 	#Measurements
 	set md_time_ns [expr $time_scale * [setmd time]]
@@ -712,93 +769,93 @@ while {1} {
 #-----------------------
 puts "\n--> Writing results"
 #-----------------------
-close $obs_traj
+#close $obs_traj
 
 #Checkpoint correlator
-correlation $corr_anion_pos_id write_checkpoint_binary "$path/corr_anion.bin" 
-correlation $corr_cation_pos_id write_checkpoint_binary "$path/corr_cation_com.bin"
-correlation $corr_cation_c1_id write_checkpoint_binary "$path/corr_cation_c1.bin"
-correlation $corr_cation_c2_id write_checkpoint_binary "$path/corr_cation_c2.bin"
-correlation $corr_cation_c3_id write_checkpoint_binary "$path/corr_cation_c3.bin"
-
-#Finalize correlator
-correlation $corr_anion_pos_id finalize
-correlation $corr_cation_pos_id finalize
-correlation $corr_cation_c1_id finalize
-correlation $corr_cation_c2_id finalize
-correlation $corr_cation_c3_id finalize
-
-#Bin index to z position
-set zlist ""
-for {set j 0} {$j < $nbins} {incr j} { lappend zlist [expr 1.0*$box_z/$nbins*$j] }
-
-##### Charge density
-set charge_density [vecadd [vecadd [vecscale $q_c1 [correlation $corr_cation_c1_id print average1]] [vecscale $q_c2 [correlation $corr_cation_c2_id print average1]]] [vecadd [vecscale $q_c3 [correlation $corr_cation_c3_id print average1]] [vecscale $q_a [correlation $corr_anion_pos_id print average1]]]] 
-##### Total density
-set total_density [vecadd [vecadd [vecadd [correlation $corr_cation_c1_id print average1] [correlation $corr_cation_c2_id print average1]] [correlation $corr_cation_c3_id print average1]] [correlation $corr_anion_pos_id print average1]] 
-##### Anion density
-set anion_den [ correlation $corr_anion_pos_id print average1 ]
-set anion_den_err [ correlation $corr_anion_pos_id print average_errorbars ] 
-#CationCom density
-set cation_den [ correlation $corr_cation_pos_id print average1 ]
-set err [ correlation $corr_cation_pos_id print average_errorbars ]
-#CationC1 densitcom
-set cation_den_c1 [ correlation $corr_cation_c1_id print average1 ]
-set err [ correlation $corr_cation_c1_id print average_errorbars ]
-#CationC2 density
-set cation_den_c2 [ correlation $corr_cation_c2_id print average1 ]
-set err [ correlation $corr_cation_c2_id print average_errorbars ]
-#CationC3 density
-set cation_den_c3 [ correlation $corr_cation_c3_id print average1 ]
-set err [ correlation $corr_cation_c3_id print average_errorbars ]
-
-#if {$useCheckpoint=="yes"} {
+#correlation $corr_anion_pos_id write_checkpoint_binary "$path/corr_anion.bin" 
+#correlation $corr_cation_pos_id write_checkpoint_binary "$path/corr_cation_com.bin"
+#correlation $corr_cation_c1_id write_checkpoint_binary "$path/corr_cation_c1.bin"
+#correlation $corr_cation_c2_id write_checkpoint_binary "$path/corr_cation_c2.bin"
+#correlation $corr_cation_c3_id write_checkpoint_binary "$path/corr_cation_c3.bin"
 #
-#	proc averageAppend afile aColumn {
-#		set infile [open "$afile" "r"]
-#		set file_data [read $infile]
-#		close $infile
+##Finalize correlator
+#correlation $corr_anion_pos_id finalize
+#correlation $corr_cation_pos_id finalize
+#correlation $corr_cation_c1_id finalize
+#correlation $corr_cation_c2_id finalize
+#correlation $corr_cation_c3_id finalize
 #
-#		set data [split $file_data "\n"]
-#		set cdc_coords ""
-#		set cdc_maxz 0
-#		foreach line $data {
-#		    if {$line != ""} {
-#			set c [join $line " "] 
-#			set cz [lindex $c 2]
-#			lappend cdc_coords $c
-#			if {$cdc_maxz < $cz} {
-#			    set cdc_maxz $cz
-#			}
-#		    }
-#		}
-#	}
+##Bin index to z position
+#set zlist ""
+#for {set j 0} {$j < $nbins} {incr j} { lappend zlist [expr 1.0*$box_z/$nbins*$j] }
 #
-#} else {
-
-	#set err [vecadd [vecadd [vecscale $q_c1 [correlation $corr_cation_c1_id print average_errorbars]] [vecscale $q_c2 [correlation $corr_cation_c2_id print average_errorbars]]] [vecadd [vecscale $q_c3 [correlation $corr_cation_c3_id print average_errorbars]] [vecscale $q_a [correlation $corr_anion_pos_id print average_errorbars]]]] 
-	set out [open "$path/charge_dens.dat" "w"]
-		foreach z $zlist c $charge_density { puts $out "$z $c" }
-	close $out 
-	set out [open "$path/total_dens.dat" "w"]
-		foreach z $zlist c $total_density { puts $out "$z $c" }
-	close $out 
-	set out [open "$path/anion_dens.dat" "w"]
-		foreach z $zlist c $anion_den e $err { puts $out "$z $c $e" }
-	close $out
-	set out [open "$path/cation_dens_com.dat" "w"]
-		foreach z $zlist c $cation_den e $err { puts $out "$z $c $e" }
-	close $out
-	set out [open "$path/cation_dens_c1.dat" "w"]
-		foreach z $zlist c $cation_den_c1 e $err { puts $out "$z $c $e" }
-	close $out
-	set out [open "$path/cation_dens_c2.dat" "w"]
-		foreach z $zlist c $cation_den_c2 e $err { puts $out "$z $c $e" }
-	close $out
-	set out [open "$path/cation_dens_c3.dat" "w"]
-		foreach z $zlist c $cation_den_c3 e $err { puts $out "$z $c $e" }
-	close $out
-#}
+###### Charge density
+#set charge_density [vecadd [vecadd [vecscale $q_c1 [correlation $corr_cation_c1_id print average1]] [vecscale $q_c2 [correlation $corr_cation_c2_id print average1]]] [vecadd [vecscale $q_c3 [correlation $corr_cation_c3_id print average1]] [vecscale $q_a [correlation $corr_anion_pos_id print average1]]]] 
+###### Total density
+#set total_density [vecadd [vecadd [vecadd [correlation $corr_cation_c1_id print average1] [correlation $corr_cation_c2_id print average1]] [correlation $corr_cation_c3_id print average1]] [correlation $corr_anion_pos_id print average1]] 
+###### Anion density
+#set anion_den [ correlation $corr_anion_pos_id print average1 ]
+#set anion_den_err [ correlation $corr_anion_pos_id print average_errorbars ] 
+##CationCom density
+#set cation_den [ correlation $corr_cation_pos_id print average1 ]
+#set err [ correlation $corr_cation_pos_id print average_errorbars ]
+##CationC1 densitcom
+#set cation_den_c1 [ correlation $corr_cation_c1_id print average1 ]
+#set err [ correlation $corr_cation_c1_id print average_errorbars ]
+##CationC2 density
+#set cation_den_c2 [ correlation $corr_cation_c2_id print average1 ]
+#set err [ correlation $corr_cation_c2_id print average_errorbars ]
+##CationC3 density
+#set cation_den_c3 [ correlation $corr_cation_c3_id print average1 ]
+#set err [ correlation $corr_cation_c3_id print average_errorbars ]
+#
+##if {$useCheckpoint=="yes"} {
+##
+##	proc averageAppend afile aColumn {
+##		set infile [open "$afile" "r"]
+##		set file_data [read $infile]
+##		close $infile
+##
+##		set data [split $file_data "\n"]
+##		set cdc_coords ""
+##		set cdc_maxz 0
+##		foreach line $data {
+##		    if {$line != ""} {
+##			set c [join $line " "] 
+##			set cz [lindex $c 2]
+##			lappend cdc_coords $c
+##			if {$cdc_maxz < $cz} {
+##			    set cdc_maxz $cz
+##			}
+##		    }
+##		}
+##	}
+##
+##} else {
+#
+#	#set err [vecadd [vecadd [vecscale $q_c1 [correlation $corr_cation_c1_id print average_errorbars]] [vecscale $q_c2 [correlation $corr_cation_c2_id print average_errorbars]]] [vecadd [vecscale $q_c3 [correlation $corr_cation_c3_id print average_errorbars]] [vecscale $q_a [correlation $corr_anion_pos_id print average_errorbars]]]] 
+#	set out [open "$path/charge_dens.dat" "w"]
+#		foreach z $zlist c $charge_density { puts $out "$z $c" }
+#	close $out 
+#	set out [open "$path/total_dens.dat" "w"]
+#		foreach z $zlist c $total_density { puts $out "$z $c" }
+#	close $out 
+#	set out [open "$path/anion_dens.dat" "w"]
+#		foreach z $zlist c $anion_den e $err { puts $out "$z $c $e" }
+#	close $out
+#	set out [open "$path/cation_dens_com.dat" "w"]
+#		foreach z $zlist c $cation_den e $err { puts $out "$z $c $e" }
+#	close $out
+#	set out [open "$path/cation_dens_c1.dat" "w"]
+#		foreach z $zlist c $cation_den_c1 e $err { puts $out "$z $c $e" }
+#	close $out
+#	set out [open "$path/cation_dens_c2.dat" "w"]
+#		foreach z $zlist c $cation_den_c2 e $err { puts $out "$z $c $e" }
+#	close $out
+#	set out [open "$path/cation_dens_c3.dat" "w"]
+#		foreach z $zlist c $cation_den_c3 e $err { puts $out "$z $c $e" }
+#	close $out
+##}
 
 #Checkpoint particle info
 set md_time [setmd time]
@@ -827,7 +884,7 @@ puts $out "Output path:      $path"
 puts $out "random seed:      [t_random seed]"
 puts $out "N ion pairs:      $n_ion"
 puts $out "box x y z:        [format %.2f $box_x] [format %.2f $box_y] [format %.2f $box_z]\n"
-puts $out "Gap:              $gap"
+puts $out "Gap:              $gapL + $gapR"
 puts $out "Bjerrum length:   $l_b"
 puts $out "Temperature:      $SI_temperature"
 puts $out "Voltage:          [lindex $argv 0] V"
