@@ -1,0 +1,12 @@
+#!/bin/bash
+#PBS -N CDC_MOSES2
+#PBS -l nodes=1:ppn=24
+#PBS -l walltime=03:00:00 
+
+JOB="CDC_MOSES2"
+DATADIR="$HOME/data/$JOB"
+
+mkdir -p $DATADIR/
+cd $DATADIR
+
+aprun -n 24 -N 24 $HOME/git/espresso_git/build2/Espresso $HOME/git/md-sim/espresso/POROUS/cdc_emibf4_acn_moses.tcl 0 $HOME/git/md-sim/espresso/POROUS/CDC_Border.dat $DATADIR 
