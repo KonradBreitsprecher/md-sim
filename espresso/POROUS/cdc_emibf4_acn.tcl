@@ -51,10 +51,10 @@ file mkdir $path
 #-------------------------------BOX----------------------------------
 #---------------------------------------------------------
 
-set box_x 43.336
-set box_y 43.336
-set box_z 150.0 
-#set box_z 185.741
+set box_x 43.291
+set box_y 43.291
+set box_z 185.741
+
 set gap [expr 0.15*$box_z]
 set box_z_tot [expr $gap+$box_z]
 
@@ -126,7 +126,7 @@ set wall_type  6
 #---------------------------------------------------------
 
 #Ion numbers
-set n_ion [expr 400]
+set n_ion [expr 600]
 set n_part [expr 2*$n_ion ]
 
 #---------------------------------------------------------
@@ -324,7 +324,8 @@ for {set i 0} {$i < $iccParticles} {incr i} {
 
     lappend icclist $i 
     if {[t_random] > 0.5} { set pm 1.0 } else { set pm -1.0}
-    part $i type $icc_wall_type mass $m_carbon fix 1 1 1 q [expr $pm * (0.2+[ t_random ]*0.5)]
+    #part $i type $icc_wall_type mass $m_carbon fix 1 1 1 q [expr $pm * (0.2+[ t_random ]*0.5)]
+    part $i type $icc_wall_type mass $m_carbon fix 1 1 1
 }
 
 
