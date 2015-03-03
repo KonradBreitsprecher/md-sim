@@ -50,13 +50,15 @@ s_bR = e_cdcR + num_border
 
 scale_ions = 1.0 + dLz / box_z
 
+#OUTPUT FILENAME
+outfile = sys.argv[1].split("/")[-1] + "_adjusted_dLz_" + str(dLz)
 
 #PRINT WHAT WAS FOUND
 print "Reading restart file: " + sys.argv[1] 
-print "...creating ./restart.dat_adjusted"
+print "...creating ./" + outfile
 
 #----OUTPUT----
-sys.stdout = open('restart.dat_adjusted', 'w')
+sys.stdout = open(outfile, 'w')
 
 #HEADER
 for l in headData:
