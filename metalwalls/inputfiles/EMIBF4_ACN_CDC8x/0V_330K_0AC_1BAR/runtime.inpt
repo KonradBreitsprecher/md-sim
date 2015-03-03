@@ -1,5 +1,5 @@
-100      Number of steps in the run.
-330.000     Translational temperature.
+400000      Number of steps in the run.
+298.15     Translational temperature.
 1         Number of ionic molecular units.
 7           Number of species.
 1	    Number of anion species
@@ -79,7 +79,7 @@ epp                    Type of run (epp,cim,aim)
 .false.     Anisotropic barostat?
 .true.     Orthorhombic cell?
 .false.     EFG calc. ?
-500        nbin
+1000        nbin
 .true.     Dump msd displacements? (if true one more line) 
 10000         msdcalltime
 shaketol 1e-8
