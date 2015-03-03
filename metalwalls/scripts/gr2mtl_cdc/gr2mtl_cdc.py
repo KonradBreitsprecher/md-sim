@@ -22,6 +22,9 @@ if not sys.argv[1][-3:]=="pdb":
     print "Please use .pdb files..Aborting"
     exit()
 
+#OUTPUT FILENAME
+outfile = "restart.dat_" + sys.argv[1][:-4].split('/')[-1]
+
 #REMOVE EMPTY LINES
 data = filter(lambda x: not re.match(r'^\s*$', x), data)
 
@@ -54,9 +57,9 @@ for m in molecules.keys():
         print "(" + str(cnt) + ") MOL " + m + " RES "  + s + ": " + str(len(species[s])).rjust(10-len(s))
     cnt += 1    	
 
-print "...creating ./restart.dat"
+print "...creating ./" + outfile
 #----OUTPUT----
-sys.stdout = open('restart.dat', 'w')
+sys.stdout = open(outfile, 'w')
 
 #HEADER
 print "restart\nexplicitmol\nT positions\nF velocities\nF wall charges\nF dipoles\nF full run log\nMolecules"  
