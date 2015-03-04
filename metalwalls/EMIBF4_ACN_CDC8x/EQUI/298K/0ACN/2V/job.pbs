@@ -1,0 +1,18 @@
+#!/bin/bash
+#PBS -N CDC_298_0_2
+#PBS -l nodes=50:ppn=24
+#PBS -l walltime=24:00:00 
+
+#PA=($(echo $PWD | tr "/" " "))
+#JOB=${PA[9]}_${PA[10]}_${PA[11]}_${PA[12]}
+JOB="298K_0ACN_2V"
+DATADIR="$HOME/data/$JOB"
+
+mkdir -p $DATADIR/
+cd $DATADIR
+rm *out* testout*
+
+cp $PWD/potential.inpt $PWD/restart.dat $PWD/runtime.inpt ./
+
+#-j 2 enables Hyperthreading
+aprun -n 1200 -N 24 $HOME/src/metalwalls/bin/metalwalls.exe
