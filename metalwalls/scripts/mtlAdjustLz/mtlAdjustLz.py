@@ -57,6 +57,29 @@ outfile = sys.argv[1].split("/")[-1] + "_adjusted_dLz_" + str(dLz)
 print "Reading restart file: " + sys.argv[1] 
 print "...creating ./" + outfile
 
+#Tests
+lCnt = 0
+isC = 0
+cdcC = 0
+pC = 0
+ncC = 0
+for l in posData:
+	if lCnt < num_ions:
+		isC += 1
+	elif lCnt >= s_cdcR and lCnt < e_cdcR:    
+		cdcC += 1
+	elif lCnt >= s_bR:
+		pC += 1
+	else:
+		ncC += 1
+	lCnt += 1
+
+print "Found " + str(lCnt) + " position lines"
+print "Scale " + str(isC) + " positions"
+print "Shift " + str(cdcC) + " cdc positions"
+print "Shift " + str(pC) + " right border positions"
+print "Unchanged " + str(ncC) + " lines"
+
 #----OUTPUT----
 sys.stdout = open(outfile, 'w')
 
@@ -66,15 +89,30 @@ for l in headData:
 
 #POSITIONS
 lCnt = 0
+isC = 0
+cdcC = 0
+pC = 0
+ncC = 0
 for l in posData:
 	if lCnt < num_ions:
+		isC += 1
 		ls = l.split()
 		posz = float(ls[-1]) * scale_ions
 		print str(ls[0]).rjust(20) + str(ls[1]).rjust(20) + str(posz).rjust(20)
-	elif (lCnt >= s_cdcR and lcnt < e_cdcR) or lCnt >= s_bR:    
+	elif lCnt >= s_cdcR and lCnt < e_cdcR:    
+		cdcC += 1
 		ls = l.split()
 		posz = float(ls[-1]) + dLz
 		print str(ls[0]).rjust(20) + str(ls[1]).rjust(20) + str(posz).rjust(20)
+	elif lCnt >= s_bR:
+		pC += 1
+		ls = l.split()
+		posz = float(ls[-1]) + dLz
+		print str(ls[0]).rjust(20) + str(ls[1]).rjust(20) + str(posz).rjust(20)
+	else:
+		ncC += 1
+		print l,
+	lCnt += 1
 
 for l in footData:
 	print l,

@@ -1,0 +1,153 @@
+Module for autotools loaded.
+rm: cannot remove `*out*': No such file or directory
+rm: cannot remove `testout*': No such file or directory
+cp: cannot stat `/zhome/academic/HLRS/icp/icpkonra/potential.inpt': No such file or directory
+cp: cannot stat `/zhome/academic/HLRS/icp/icpkonra/restart.dat': No such file or directory
+cp: cannot stat `/zhome/academic/HLRS/icp/icpkonra/runtime.inpt': No such file or directory
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 0 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 5 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 5
+Rank 8 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 8
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 16 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 16
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 1 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 1
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 23 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 23
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 19 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 19
+Rank 7 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 7
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 3 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 3
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 17 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 17
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 20 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 20
+Rank 12 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 12
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 15 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 15
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 11 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 11
+Rank 6 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 6
+Rank 9 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 9
+Rank 2 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 2
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 13 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 13
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 22 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 22
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 14 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 14
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 18 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 18
+Rank 10 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 10
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 4 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 4
+Rank 21 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n0] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 21
+Rank 50 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 50
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 71 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 71
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 53 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 53
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 62 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 62
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 69 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 69
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 68 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 68
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 48 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 48
+Rank 67 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 67
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 70 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 70
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 60 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 60
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 49 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 49
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 66 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 66
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 52 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 52
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 55 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 55
+Rank 58 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 58
+Rank 65 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 65
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 54 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 54
+Rank 64 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 64
+Rank 56 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 56
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 61 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 61
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 63 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 63
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 59 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 59
+Rank 57 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 57
+Rank 51 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n2] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 51
+Rank 43 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 43
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 32 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 32
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 31 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 31
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 27 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 27
+Rank 42 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 42
+ Fatal error,  2 : Problem opening the file potential.inpt
+_pmiu_daemon(SIGCHLD): [NID 00300] [c1-0c1s11n0] [Thu Mar  5 21:18:18 2015] PE RANK 0 exit signal Aborted
+Rank 38 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 38
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+[NID 00300] 2015-03-05 21:18:18 Apid 746111: initiated application termination
+Rank 47 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 47
+Rank 35 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 35
+_pmiu_daemon(SIGCHLD): [NID 00302] [c1-0c1s11n2] [Thu Mar  5 21:18:18 2015] PE RANK 48 exit signal Aborted
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 41 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 41
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 39 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 39
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 28 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 28
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 40 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 40
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 44 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 44
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 36 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 36
+Rank 45 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 45
+Rank 29 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 29
+ Fatal error,  2 : Problem opening the file potential.inpt
+Rank 46 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 46
+Rank 24 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 24
+Rank 30 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 30
+Rank 26 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 26
+Rank 34 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 34
+Rank 33 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 33
+Rank 25 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 25
+Rank 37 [Thu Mar  5 21:18:18 2015] [c1-0c1s11n1] application called MPI_Abort(MPI_COMM_WORLD, 1) - process 37
+_pmiu_daemon(SIGCHLD): [NID 00301] [c1-0c1s11n1] [Thu Mar  5 21:18:18 2015] PE RANK 43 exit signal Aborted
