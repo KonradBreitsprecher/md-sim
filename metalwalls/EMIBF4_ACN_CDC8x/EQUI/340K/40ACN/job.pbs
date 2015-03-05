@@ -1,0 +1,16 @@
+#!/bin/bash
+#PBS -N CDC_340_40_0
+#PBS -l nodes=2:ppn=24
+#PBS -l walltime=04:00:00 
+
+JOB="340K_40ACN_0V"
+DATADIR="$HOME/data/$JOB"
+
+mkdir -p $DATADIR/
+cd $DATADIR
+rm *out* testout*
+
+cp $PWD/potential.inpt $PWD/restart.dat $PWD/runtime.inpt ./
+
+#-j 2 enables Hyperthreading
+aprun -n 80 -N 40 -j 2 $HOME/src/metalwalls/bin/metalwalls.exe
