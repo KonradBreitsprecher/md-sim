@@ -1,0 +1,16 @@
+#!/bin/bash
+#PBS -N 340K_40ACN_2V
+#PBS -l nodes=2:ppn=24
+#PBS -l walltime=04:00:00
+
+JOB="340K_40ACN_2V"
+DATADIR="$HOME/data/$JOB"
+INPUTDIR=/zhome/academic/HLRS/icp/icpkonra/git/md-sim/metalwalls/EMIBF4_ACN_CDC8x/EQUI/340K/40ACN/2V
+
+mkdir -p $DATADIR/
+cd $DATADIR
+rm *out* testout*
+
+cp $INPUTDIR/potential.inpt $INPUTDIR/restart.dat $INPUTDIR/runtime.inpt ./
+
+aprun -n 48 -N 24 $HOME/src/metalwalls/bin/metalwalls.exe
