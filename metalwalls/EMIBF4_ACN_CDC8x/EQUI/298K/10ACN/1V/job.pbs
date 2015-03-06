@@ -1,11 +1,11 @@
 #!/bin/bash
-#PBS -N 340K_40ACN_1V
+#PBS -N 298K_10ACN_1V
 #PBS -l nodes=2:ppn=24
-#PBS -l walltime=04:00:00
+#PBS -l walltime=01:00:00
 
-JOB="340K_40ACN_1V"
+JOB="298K_10ACN_1V"
 DATADIR="$HOME/data/$JOB"
-INPUTDIR=/zhome/academic/HLRS/icp/icpkonra/git/md-sim/metalwalls/EMIBF4_ACN_CDC8x/EQUI/340K/40ACN/1V
+INPUTDIR=/zhome/academic/HLRS/icp/icpkonra/git/md-sim/metalwalls/EMIBF4_ACN_CDC8x/EQUI/298K/10ACN/1V
 
 mkdir -p $DATADIR/
 cd $DATADIR
