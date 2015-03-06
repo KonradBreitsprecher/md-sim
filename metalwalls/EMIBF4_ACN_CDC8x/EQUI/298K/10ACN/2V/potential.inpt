@@ -10,10 +10,10 @@ Im2 1
 Im3 1
 bondtypes 1
 constraints 3
-1 2 5.117
-1 3 7.221
-2 3 10.524
 molecule ACN
+1 2 5.1166260275
+1 3 5.7169834185
+2 3 9.852794253
 natoms 3
 N 1
 C 1

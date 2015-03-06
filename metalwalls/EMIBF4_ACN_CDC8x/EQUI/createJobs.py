@@ -53,15 +53,15 @@ for subdir, dirs, files in os.walk(rootdir):
                 print ""
 		print "JOB=\"" + job + "\""                                                           
 		print "DATADIR=\"$HOME/data/$JOB\""
-                print "INPUTDIR=" + ap
-                print ""
-                print "mkdir -p $DATADIR/"
-                print "cd $DATADIR"
-                print "rm *out* testout*"
-                print ""
-                print "cp $INPUTDIR/potential.inpt $INPUTDIR/restart.dat $INPUTDIR/runtime.inpt ./"
-                print ""
-                print "aprun -n " + str(cores) + " -N " + ppn + " $HOME/src/metalwalls/bin/metalwalls.exe"
+        print "INPUTDIR=" + ap
+        print ""
+        print "mkdir -p $DATADIR/"
+        print "cd $DATADIR"
+        print "rm *out* testout*"
+        print ""
+        print "cp $INPUTDIR/potential.inpt $INPUTDIR/restart.dat $INPUTDIR/runtime.inpt ./"
+        print ""
+        print "aprun -n " + str(cores) + " -N " + ppn + " $HOME/src/metalwalls/bin/metalwalls.exe"
 	
 		sys.stdout = sysout	
 
