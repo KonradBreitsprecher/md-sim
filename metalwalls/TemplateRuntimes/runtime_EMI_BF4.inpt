@@ -53,10 +53,10 @@ epp                    Type of run (epp,cim,aim)
 .false.     Relax input structure?
 .false.     COM reset?.false..false..true.200
 10000         Number of steps inbetween periodic output (energies).
-100        Number of steps inbetween periodic output (velocities etc).
+500        Number of steps inbetween periodic output (velocities etc).
 10000        Number of steps inbetween periodic output (frictions etc).
 10000        Number of steps inbetween periodic output (pressure etc).
-10000        Number of steps inbetween periodic output (restart file).
+1000        Number of steps inbetween periodic output (restart file).
 10000       Number of steps between forces output
 10000       Number of steps between wall forces output
 500     Number of bins

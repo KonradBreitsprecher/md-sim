@@ -6,11 +6,12 @@ rootdir = sys.argv[1]
 walltime = sys.argv[2]
 nodes = sys.argv[3]
 ppn = sys.argv[4]
-numSteps = sys.argv[5]
 
 cores = int(nodes)*int(ppn)
-#numSteps = int(360000 * int(walltime) / (11.86 + 7508.77 / cores) * 0.5 )
+#numSteps = sys.argv[5]
+numSteps = cores*35*walltime  
 
+numSteps = sys.argv[5]
 submits = []  
 sysout = sys.stdout
 
@@ -51,15 +52,29 @@ for subdir, dirs, files in os.walk(rootdir):
 		print "#PBS -l nodes=" + nodes + ":ppn=" + ppn
 		print "#PBS -l walltime=" + walltime.zfill(2) + ":00:00"
                 print ""
-		print "JOB=\"" + job + "\""                                                           
-		print "DATADIR=\"$HOME/data/$JOB\""
 		print "INPUTDIR=" + ap
-		print ""
-		print "mkdir -p $DATADIR/"
+		print "JOB=\"" + job + "\""                                                           
+		print "mkdir -p $HOME/data/$JOB"
+		print "cd $HOME/data/$JOB"
+		print "NRUNS=$(ls -lR | grep ^d | wc -l)"
+		print "DATADIR=\"$(expr $NRUNS + 1)\""
+		print "mkdir $DATADIR"
 		print "cd $DATADIR"
-		print "rm *out* testout*"
 		print ""
-		print "cp $INPUTDIR/potential.inpt $INPUTDIR/restart.dat $INPUTDIR/runtime.inpt ./"
+		#FIRST RUN? USE restart.dat from INPUTDIR
+		print "if [ \"$NRUNS\" == \"0\" ]; then"
+		print "   RESTARTFILE=\"$INPUTDIR/restart.dat\""
+		print "else"
+		#Nth RUN? USE (N-1)th MOST RECENT testout.rst* IF FILE EXISTS, OTHERWISE (N-1)th restart.dat
+		print "   if [ -a ../$NRUNS/testout.rst* ]; then"
+		print "      RESTARTFILE=\"$(ls -t ../$NRUNS/testout.rst* | head -1)\""
+		print "   else"
+		print "      RESTARTFILE=\"../$NRUNS/restart.dat\""
+		print "   fi"
+		print "fi"
+		print ""
+		print "cp $INPUTDIR/potential.inpt $INPUTDIR/runtime.inpt ./"
+		print "cp $RESTARTFILE ./restart.dat"
 		print ""
 		print "aprun -n " + str(cores) + " -N " + ppn + " $HOME/src/metalwalls/bin/metalwalls.exe"
 	
