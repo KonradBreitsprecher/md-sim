@@ -1,0 +1,16 @@
+
+
+;[ atomtypes ]
+;name  mass      charge   ptype    sigma        epsilon
+;WAL2   12.0110   0.000     A       0.337      	0.2300
+
+
+
+
+[ moleculetype ]
+; Name            nrexcl
+WAL2                 3
+
+[ atoms ]
+;   nr       type  resnr residue  atom   cgnr     charge       mass  typeB    chargeB      massB
+     1        WAL2     1    WAL2    P      1    0.000000000     12.011   ; qtot 0

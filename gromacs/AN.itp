@@ -1,0 +1,35 @@
+;								##############	Non-bonded Charges, van der Waals parameters taken from: D. M. F. Edwards, P. A. Madden and I. R. McDonald, Molecular Physics, 1984, 51, 1141-1161.  ###########
+;								##############	Bonded parameters taken from: T. Chen, M. Chidambaram, Z. Liu, B. Smit and A. T. Bell, The Journal of Physical Chemistry B, 2010, 114, 5790-5794.	################
+
+
+
+
+
+;[ atomtypes ]
+;name	mass	   charge  ptype	sigma 		epsilon
+;NAC	14.0100   0.000     A       0.33000	0.4200
+;CA2	12.0100   0.000     A       0.34000	0.4200
+;CH3AN	15.0400   0.000     A       0.36000	1.5900   
+   
+[ moleculetype ]
+; Name nrexcl
+AN       3
+
+[ atoms ]
+;   nr      type  resnr resid  atom  cgnr   charge     mass
+     1         NAC    1  AN      NAC     1   -0.398      
+     2         CA2    1  AN      CA2     1    0.129      
+     3       CH3AN    1  AN      CA3   1    0.269      
+
+[ bonds ]
+; ai  aj  fu    c0, c1, ...
+   2   1   1    0.117   178656.8    0.117   178656.8 ;   CA2  NAC   
+   2   3   1    0.146   196229.6    0.146   196229.6 ;   CA2  CH3AN 
+
+[ angles ]
+; ai  aj  ak  fu    c0, c1, ...
+   1   2   3   2    180.0  418.400004    180.0  418.400004 ;   NAC  CA2  CH3AN   
+
+
+
+
