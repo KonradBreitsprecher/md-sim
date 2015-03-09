@@ -1,0 +1,14 @@
+
+;				##############	Charges, van der Waals parameters, bonds, and angles taken from: Roy, D. and M. Maroncelli (2010). "An Improved Four-Site Ionic Liquid Model." The Journal of Physical Chemistry B 114(39): 12629-12631.	################
+
+;[ atomtypes ]
+;name  mass      charge   ptype    sigma        epsilon
+;BFCG   86.81	   0.000     A	0.451  	3.2400
+
+[ moleculetype ]
+; molname	nrexcl
+ BF		1
+
+[ atoms ]
+;   nr  type resnr residue  	atom   cgnr     charge	mass
+     1  BFCG    1     BF    	BFCG      1       -0.78  

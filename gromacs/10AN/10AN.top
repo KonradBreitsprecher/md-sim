@@ -1,0 +1,35 @@
+; Include forcefield parameters
+#include "../amber03.ff/forcefield.itp"
+	
+;Include Graphene Pore 1
+#include "../CDC_1.itp"
+
+;Include Graphene Pore 2
+#include "../CDC_2.itp"
+
+;Include Graphene sheet positive
+#include "../Wall_1.itp"
+
+;Include Graphene sheet negative
+#include "../Wall_2.itp"
+
+
+
+;Include RTIL
+#include "../EMIM_CG.itp"
+#include "../BF4_CG.itp"
+#include "../AN.itp"
+
+[system]
+Graphene RTIL Pore
+
+[molecules]
+
+CDC1	3821
+CDC2	3821
+WAL1	200
+WAL2	200
+BF	601
+EMIM 	601
+AN 	322
+

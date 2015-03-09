@@ -1,0 +1,32 @@
+
+[ atomtypes ]
+
+CDC1	12.0110   0.000     A       0.337      	0.2300
+CDC2	12.0110   0.000     A       0.337      	0.2300
+WAL1	12.0110   0.000     A       0.337      	0.2300
+WAL2	12.0110   0.000     A       0.337      	0.2300
+IMI	67.07	   0.000	A	0.438		2.5600
+MET	15.04	   0.000	A	0.341		0.3600
+ETH	29.07	   0.000	A	0.438		1.2400  
+BFCG   86.81	   0.000        A	0.451  		3.2400
+NAC	14.0100    0.000        A       0.33000		0.4200
+CA2	12.0100    0.000        A       0.34000		0.4200
+CH3AN	15.0400    0.000        A       0.36000		1.5900
+GWALL	0		0	A	0		0
+
+  
+
+;[ atomtypes ]
+;name  mass      charge   ptype    sigma        epsilon
+;CDC1   12.0110   0.000     A       0.337      	0.2300
+
+
+
+
+[ moleculetype ]
+; Name            nrexcl
+CDC1                 3
+
+[ atoms ]
+;   nr       type  resnr residue  atom   cgnr     cha1rge       mass  typeB    chargeB      massB
+     1        CDC1     1    CDC1    C1      1    0.020000000     12.011   ; qtot 0

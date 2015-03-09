@@ -1,0 +1,88 @@
+; Run parameters
+;define = -DPOSRES_YZ1 -DPOSRES_YZ2 -DPOSRES_YZP -DPOSRES_YZN
+integrator		= md		; leap-frog integrator
+nsteps			= 100000	; 2 *  100 000 = 200 ps
+dt			= 0.002	; 2 fs
+
+; Output control
+nstxout		=  5000		; save coordinates every 0.2 ps
+nstvout		=  5000		; save velocities every 0.2 ps
+nstfout		=  5000		; save forces every 0.2 ps
+nstenergy		=  500			; save energies every 2 ps
+nstlog			=  5000		; update log file every 8 ps
+nstcalcenergy		= 5			; Should only be set to 0 when studying dynamics
+nstxtcout		= 500			; save compressed coordinates every 0.2 
+;compressed-x-precision = 10000		; precision to write compressed traj file
+energygrps		= CDC1 CDC2 WAL1 WAL2 EMIM BF AN	; Energy groups to write to the energy file
+
+; Bond parameters
+continuation		= no		; New simulation
+constraint_algorithm = lincs	; holonomic constraints 
+constraints		= all-bonds	; all bonds (even heavy atom-H bonds) constrained
+lincs_iter		= 1 		; accuracy of LINCS
+lincs_order		= 4		; also related to accuracy
+lincs_warnangle	= 90		; 30 is default
+
+; Neighborsearching
+cutoff_scheme		= verlet	; Generate pair list with buffering
+verlet_buffer_drift	= 0.005	; 0.005 kJ/mol/ps, target energy drift per particle caused by Verlet buffer, indirectly sets nslist 
+ns_type		= grid		; search neighboring grid cells
+nstlist		= 10		; Update neighbour list every 10 steps
+nstcalclr		= -1		; Calculate long range forces every time neighbour searching is performed
+rlist			= 1.2		; short-range neighborlist cutoff (in nm)
+rlistlong		= -1		; Cut-off distance for long range neighbour list, automatically set to longest cut-off distance
+pbc			= xy		; 2-D PBC
+nwall			= 2		; wall at z=0 and z=z
+wall_atomtype		= GWALL GWALL ; Fake wall atom for Ewald calcs
+wall_density		= 1 1		; number density of wall atoms
+periodic-molecules	= no		; molecules are finite and do not couple to themselves throught the pbc
+
+; Electrostatics 
+coulombtype		= PME		; Particle Mesh Ewald for long-range electrostatics
+coulomb_modifier	= none		; Unmodified coulomb potential
+rcoulomb		= 1.2		; short-range electrostatic cutoff (in nm)
+rcoulomb-switch	= 0		; Distance to start switching coulomb potential
+epsilon-r		= 1		; Relative dielectric constant
+
+; Ewald
+pme_order		= 4		; cubic interpolation
+fourierspacing	= 0.12		; grid spacing for FFT
+fourier-nx		= 0		; Highest magnitude wave vector, 0 = set by fourierspacing
+fourier-ny		= 0		; Highest magnitude wave vector, 0 = set by fourierspacing
+fourier-nz		= 0		; Highest magnitude wave vector, 0 = set by fourierspacing
+ewald-rtol		= 1e-5		; relative strength of the Ewald-shifted potential at rcoulomb
+ewald-geometry	= 3dc		; Ewald sums performed in all directions
+epsilon-surface	= 0		; Dipole correction turned off for 3D Ewald
+optimize-fft		= yes		; optimises the fft plan at the start of the simulation, turn off (no) for short simulations
+
+; Van der Waals
+vdwtype		= cut-off	; LJ potential smoothly decays to zero between rdvw and rvdw-switch
+rvdw			= 1.2		; short-range van der Waals cutoff (in nm)
+rvdw-switch		= 0		; distance to start switching VdW potential
+vdw_modifier		= none		; Unmodified VdW potential, no exact cutoff is used, energies calculated for all pairs in the neighborlist
+DispCorr		= EnerPres	; Long range dispersion corrections for energy and pressure
+
+; Temperature coupling is on
+tcoupl			= Berendsen	; modified Berendsen thermostat
+nh-chain-length	= 10		; Number of chained thermostats md integrator only supports 1
+tc-grps		= CDC1	CDC2  WAL1  WAL2  EMIM  BF AN	; coupling groups 
+nsttcouple		= -1									; frequency for coupling temperature set to nstlist
+tau_t			= 0.2 0.2 0.2 0.2 0.2 0.2 0.2 ; time constant, in ps
+ref_t			= 298 298 298 298 298 298 298 ; reference temperature, one for each group, in K
+
+
+; Pressure coupling is off
+pcoupl			= no 		;  pressure coupling in NPT
+
+
+; Velocity generation
+gen_vel		= yes		; assign velocities from Maxwell distribution
+gen_temp		= 300		; temperature for Maxwell distribution
+gen_seed		= -1		; generate a random seed
+
+; Freeze groups	
+freezegrps		= CDC1    CDC2  WAL1   WAL2	 
+freezedim		= Y Y Y  Y Y Y  Y Y Y  Y Y Y
+
+; Energy group exclusions
+;energygrp-excl	= CDC1 CDC1 CDC1 WAL1 WAL1 WAL1 CDC2 CDC2 CDC2 WAL2 WAL2 WAL2

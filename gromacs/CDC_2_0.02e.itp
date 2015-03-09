@@ -1,0 +1,16 @@
+
+
+;[ atomtypes ]
+;name  mass      charge   ptype    sigma        epsilon
+;CDC2   12.0110   0.000     A       0.337      	0.2300
+
+
+
+
+[ moleculetype ]
+; Name            nrexcl
+CDC2                 3
+
+[ atoms ]
+;   nr       type  resnr residue  atom   cgnr     charge       mass  typeB    chargeB      massB
+     1        CDC2     1    CDC2    C2      1    -0.020000000     12.011   ; qtot 0

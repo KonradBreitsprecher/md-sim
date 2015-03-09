@@ -1,0 +1,83 @@
+    
+;[ defaults ]
+; nbfunc comb-rule gen-pairs fudgeLJ fudgeQQ		#### nbfunc 1 = LJ, 2 = Buckingham### 	### comb-rule 1 = only geometric averages, 2 = Lorentz-Berthelot (arthimetic avearge for sigma and geometric average for epsilon) 3 =  only aritmatic averages### 
+;	1 	2 	yes 	 0.5 	  0.5			; #############      Modified ../amber.ff/forcefield.itp to match the fudgeQQ parameters #################
+
+;######Merlet, C., et al. (2012). "New Coarse-Grained Models of Imidazolium Ionic Liquids for Bulk and Interfacial Molecular Simulations." The Journal of Physical Chemistry C 116(14): 7687-7693.
+	
+;[ atomtypes ]
+;name  mass      charge   ptype    sigma        epsilon
+;IMI	67.07	   0.000	A	0.438		2.5600
+;MET	15.04	   0.000	A	0.341		0.3600
+;ETH	29.07	   0.000	A	0.438		1.2400  
+;BFCG    86.81	   0.000        A	0.451  		3.2400
+;NAC	14.0100    0.000        A       0.33000		0.4200
+;CA2	12.0100    0.000        A       0.34000		0.4200
+;CH3AN	15.0400    0.000        A       0.36000		1.5900
+
+[ moleculetype ]
+; Name nrexcl
+EMIM     3
+
+[ atoms ]
+;   nr      type  resnr resid  atom  cgnr   charge     mass
+     1       IMI    1  EMIM    IMI     1    0.3591     
+     2       MET    1  EMIM    MET     2    0.1888     
+     3       ETH    1  EMIM    ETH     3    0.2321     
+     
+
+[ bonds ]
+; ai  aj  fu    c0, c1, ...
+   1   2   1    0.270760189  1000000  0.270760189  1000000;   IMI MET   		########## Bond and angle forces are fudged to give the molecule rigidity
+   1   3   1    0.302529734  1000000  0.302529734  1000000;   IMI ETH   
+   2   3   1    0.521387418  1000000  0.521387418  1000000;   IMI ETH     
+
+[ angles ]
+; ai  aj  ak  fu    c0, c1, ...
+   2   1   3   1    130.78255   5000   130.78255   5000;   MET	IMI  ETH  
+   1   2   3   1    23.15477    5000   23.15477    5000;   IMI	MET  ETH   
+   2   3   1   1    26.06268    5000   26.06268    5000;   MET	ETH  IMI  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
