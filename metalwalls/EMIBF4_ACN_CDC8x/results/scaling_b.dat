@@ -1,0 +1,18 @@
+#fit: 100 integration steps = 11.86+7508.77/cores (runtime [s])
+#     timestep = 2 fs
+#     1 fs = (11.86+7508.77/cores)/200 [s]
+#     24h calculation time: 24*60*60 * 200/(11.86+7508.77/cores) * 10e-6 [ns] simulation time
+#     = 2.32 ns @ 120 cores
+#     = 4.01 ns @ 240 cores
+#
+#Num Steps = runtime*60*60 * 200/(11.86+7508.77/cores) *10^-6 ns / 2 fs
+
+	
+12 638.42402100563049 #1 node   
+18 429.4811680316925  #1 node
+24 323.2153308391571  #1 node
+#48 275.83420205116272 #1 node 48 ppn hyperthreading
+48 166.27596282958984 #2 nodes 24 ppn
+72 113.62906193733215 #3 nodes 24 ppn
+96 93.041752099990845 #4 nodes 24 ppn
+120 76.26128101348877 #5 nodes 24 ppn
