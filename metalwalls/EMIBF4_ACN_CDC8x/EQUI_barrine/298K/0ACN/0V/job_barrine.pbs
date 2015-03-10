@@ -1,0 +1,36 @@
+#PBS -S /bin/bash
+#PBS -q workq
+#PBS -A uq-chemEng
+#PBS -m ae
+#PBS -e Error_298K_0ACN_0V_Bench
+#PBS -o Output_298K_0ACN_0V_Bench
+#PBS -N 298K_0ACN_0V
+#PBS -l walltime=120:00:00
+#PBS -l place=scatter
+#PBS -l select=8:ncpus=4:mpiprocs=4:NodeType=medium
+
+
+
+INPUTDIR=/zhome/academic/HLRS/icp/icpkonra/git/md-sim/metalwalls/EMIBF4_ACN_CDC8x/EQUI/298K/0ACN/0V
+JOB="298K_0ACN_0V"
+mkdir -p $HOME/data/$JOB
+cd $HOME/data/$JOB
+NRUNS=$(ls -lR | grep ^d | wc -l)
+DATADIR="$(expr $NRUNS + 1)"
+mkdir $DATADIR
+cd $DATADIR
+
+if [ "$NRUNS" == "0" ]; then
+   RESTARTFILE="$INPUTDIR/restart.dat"
+else
+   if [ -a ../$NRUNS/testout.rst* ]; then
+      RESTARTFILE="$(ls -t ../$NRUNS/testout.rst* | head -1)"
+   else
+      RESTARTFILE="../$NRUNS/restart.dat"
+   fi
+fi
+
+cp $INPUTDIR/potential.inpt $INPUTDIR/runtime.inpt ./
+cp $RESTARTFILE ./restart.dat
+
+aprun -n 80 -N 20 $HOME/src/metalwalls/bin/metalwalls.exe
