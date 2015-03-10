@@ -4,6 +4,19 @@ from collections import defaultdict
 from OrderedDefaultDict import *
 import re
 
+def foldPos(pos):
+    dim = 0
+    retPos = pos
+    for co in pos:
+        if co < 0:
+            while co < 0:
+                co += box[dim]
+        elif co > box[dim]:
+            while co > box[dim]:
+                co -= box[dim]
+        retPos[dim]=co
+        dim += 1
+    return retPos        
 
 #PRINT EXPECTED ARGS
 print "ARGS: PDB-FILE"
@@ -97,20 +110,20 @@ for m in molecules.keys():
 	if m not in molwl:
 		for s in molecules[m]:
 			for e in species[s]:
-				fCoords = ang_to_atomic * array((map(float, e)))
-				print m + "   " + str(fCoords[0]).rjust(20) + str(fCoords[1]).rjust(20) + str(fCoords[2]).rjust(20)
+				fCoords = ang_to_atomic * foldPos(array((map(float,e))))
+				print str(fCoords[0]).rjust(20) + str(fCoords[1]).rjust(20) + str(fCoords[2]).rjust(20)
 for m in molecules.keys():
 	if m in molwlPOL:
 		for s in molecules[m]:
 			for e in species[s]:
-				fCoords = ang_to_atomic * array((map(float, e)))
-				print m + "   " + str(fCoords[0]).rjust(20) + str(fCoords[1]).rjust(20) + str(fCoords[2]).rjust(20)
+				fCoords = ang_to_atomic * foldPos(array((map(float,e))))
+				print str(fCoords[0]).rjust(20) + str(fCoords[1]).rjust(20) + str(fCoords[2]).rjust(20)
 for m in molecules.keys():
 	if m in molwlNONPOL:
 		for s in molecules[m]:
 			for e in species[s]:
-				fCoords = ang_to_atomic * array((map(float, e)))
-				print m + "   " + str(fCoords[0]).rjust(20) + str(fCoords[1]).rjust(20) + str(fCoords[2]).rjust(20)
+				fCoords = ang_to_atomic * foldPos(array((map(float,e))))
+				print str(fCoords[0]).rjust(20) + str(fCoords[1]).rjust(20) + str(fCoords[2]).rjust(20)
 
 #CELL
 box = ang_to_atomic*array(box)
