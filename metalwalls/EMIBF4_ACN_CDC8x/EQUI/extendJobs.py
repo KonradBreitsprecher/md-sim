@@ -1,6 +1,6 @@
 import os,sys
 
-print "ARGS: JOBS_ROOTDIR WALLTIME(h) NODES PPN NUM_STEPS"
+print "ARGS: JOBS_ROOTDIR WALLTIME(h) NODES PPN"
 
 rootdir = sys.argv[1]
 walltime = sys.argv[2]
@@ -8,10 +8,8 @@ nodes = sys.argv[3]
 ppn = sys.argv[4]
 
 cores = int(nodes)*int(ppn)
-#numSteps = sys.argv[5]
-numSteps = cores*35*walltime  
+numSteps = cores*30*walltime  
 
-numSteps = sys.argv[5]
 submits = []  
 sysout = sys.stdout
 
@@ -28,6 +26,17 @@ for subdir, dirs, files in os.walk(rootdir):
 		ACN = sp[-2]
 		V = sp[-1]
 		job = "_".join([T,ACN,V])
+		#CALC NUMSTEPS FROM SCALING LAWS
+		if ACN=="0ACN":
+			numSteps = int(81.6*pow(cores,0.834)*(float(walltime)-0.1))
+		elif ACN=="10ACN":
+			numSteps = int(84.346*pow(cores,0.8415)*(float(walltime)-0.1))
+		elif ACN=="20ACN":
+			numSteps = int(65.64*pow(cores,0.865)*(float(walltime)-0.1))
+		elif ACN=="40ACN":
+			numSteps = int(74.07*pow(cores,0.842)*(float(walltime)-0.1))
+		#numSteps = int(numSteps*0.9)
+		
 		pbsoutfile = os.path.join(ap,"job.pbs")
 		
 		#CHANGE INTEGRATION STEPS IN runtime.inpt

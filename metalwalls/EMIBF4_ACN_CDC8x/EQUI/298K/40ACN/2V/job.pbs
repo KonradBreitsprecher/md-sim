@@ -1,6 +1,6 @@
 #!/bin/bash
 #PBS -N 298K_40ACN_2V
-#PBS -l nodes=4:ppn=20
+#PBS -l nodes=70:ppn=24
 #PBS -l walltime=06:00:00
 
 INPUTDIR=/zhome/academic/HLRS/icp/icpkonra/git/md-sim/metalwalls/EMIBF4_ACN_CDC8x/EQUI/298K/40ACN/2V
@@ -25,4 +25,4 @@ fi
 cp $INPUTDIR/potential.inpt $INPUTDIR/runtime.inpt ./
 cp $RESTARTFILE ./restart.dat
 
-aprun -n 80 -N 20 $HOME/src/metalwalls/bin/metalwalls.exe
+aprun -n 1680 -N 24 $HOME/src/metalwalls/bin/metalwalls.exe
