@@ -83,3 +83,4 @@ epp                    Type of run (epp,cim,aim)
 .true.     Dump msd displacements? (if true one more line) 
 10000         msdcalltime
 shaketol 1e-8
+3D

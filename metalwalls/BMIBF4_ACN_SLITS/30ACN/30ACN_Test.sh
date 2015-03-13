@@ -1,4 +1,4 @@
-PBS -S /bin/bash
+#PBS -S /bin/bash
 #PBS -N MW
 #PBS -q workq
 #PBS -A uq-ChemEng
@@ -7,7 +7,7 @@ PBS -S /bin/bash
 #PBS -e Error_30ACN_Test.err
 #PBS -o Output_30ACN_Test.log
 #PBS -M r.burt@uq.edu.au
-#PBS -l walltime=02:00:00
+#PBS -l walltime=03:00:00
 #PBS -l place=scatter
 #PBS -l select=8:ncpus=4:mpiprocs=4:NodeType=medium
 

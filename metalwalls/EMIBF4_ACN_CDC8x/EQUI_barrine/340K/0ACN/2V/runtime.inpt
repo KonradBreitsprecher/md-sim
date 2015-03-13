@@ -1,4 +1,4 @@
-10      Number of steps in the run.
+100      Number of steps in the run.
 340.000     Translational temperature.
 1         Number of ionic molecular units.
 7           Number of species.
