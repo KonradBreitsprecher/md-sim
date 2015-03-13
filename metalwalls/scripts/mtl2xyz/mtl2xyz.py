@@ -43,9 +43,6 @@ for rl in rData:
     currl+=1
 
 print "----> Found species:" 
-print molNames
-print molNum
-print molCharges
 for mname,mnum,mch in zip(molNames,molNum,molCharges):
     print mname.ljust(10,' ') + " N=" + str(mnum).ljust(10,' ') + " q=" + str(mch)
 numParts = sum(molNum)
@@ -62,7 +59,7 @@ mod_p_N = numPos%numParts
 
 #NUMBER OF POSITIONS DOESN'T CORRESPOND TO TOTAL PARTICLE NUMBER
 if mod_p_N != 0:
-    print "Number of positions (" + str(numPos) + ") doesn't correspond to total particle number (" + str(numParts) + "): cutting last " + str(mod_p_N) + " postitions"
+    print "Number of positions (" + str(numPos) + "%" + str(numParts) + "=" + str(mod_p_N) + ") doesn't correspond to total particle number: ignoring last " + str(mod_p_N) + " postitions"
     pData = pData[:-mod_p_N]
 
 #ADD PARTICLE NAMES
