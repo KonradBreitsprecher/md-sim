@@ -68,6 +68,9 @@ mi = 0
 mti = 0
 numT = 0
 for pd in pData:
+    if mi==0 and mti==0:
+        xyzData.append(str(numParts) + "\n")
+        xyzData.append("Converted position.out to xyz\n")
     xyzData.append(molNames[mti] + " " + pd)
     mi += 1
     if mi==molNum[mti]:
@@ -80,8 +83,8 @@ for pd in pData:
 
 #WRITE XYZ FILE
 xyzFile = open(sys.argv[3], "w")
-xyzFile.write(str(numParts) + "\n")
-xyzFile.write("Converted position.out from metalwalls. " + str(numT) + " Timesteps. " + " ".join(molInfo) + "\n")
+#xyzFile.write(str(numParts-1) + "\n")
+#xyzFile.write("Converted position.out from metalwalls. " + str(numT) + " Timesteps. " + " ".join(molInfo) + "\n")
 xyzFile.writelines(xyzData)
 
-print "DONE converting " + sys.argv[2] + " to " + sys.argv[3]
+print "DONE converting " + sys.argv[2] + " to " + sys.argv[3] + " (" + str(numT) + " Timesteps)"
