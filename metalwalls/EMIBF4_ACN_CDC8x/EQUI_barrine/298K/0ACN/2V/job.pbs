@@ -6,13 +6,13 @@
 #PBS -e error_298K_0ACN_2V
 #PBS -o output_298K_0ACN_2V
 #PBS -N 298K_0ACN_2V
-#PBS -l select=1:ncpus=4:mpiprocs=4:NodeType=medium
-#PBS -l walltime=01:00:00
+#PBS -l select=32:ncpus=4:mpiprocs=4:NodeType=medium
+#PBS -l walltime=200:00:00
 
 source /usr/share/modules/init/bash
 module load intel-fc-13 openmpi/1.5.3-intel
 
-INPUTDIR=/work1/uqrburt/metalwalls/runs/md-sim/metalwalls/EMIBF4_ACN_CDC8x/EQUI/298K/0ACN/2V
+INPUTDIR=/work1/uqrburt/metalwalls/runs/md-sim/metalwalls/EMIBF4_ACN_CDC8x/EQUI_barrine/298K/0ACN/2V
 JOB="298K_0ACN_2V"
 mkdir -p $HOME/metalwalls_bench/$JOB
 cd $HOME/metalwalls_bench/$JOB
@@ -34,4 +34,4 @@ fi
 cp $INPUTDIR/potential.inpt $INPUTDIR/runtime.inpt ./
 cp $RESTARTFILE ./restart.dat
 
-mpirun -np 4  /work1/uqrburt/metalwalls/bin/metalwalls.exe
+mpirun -np 128  /work1/uqrburt/metalwalls/bin/metalwalls.exe
