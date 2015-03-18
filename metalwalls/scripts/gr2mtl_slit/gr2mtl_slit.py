@@ -75,27 +75,43 @@ for m in molecules.keys():
     for s in molecules[m]:
         print "(" + str(cnt) + ") MOL " + m + " RES "  + s + ": " + str(len(species[s])).rjust(10-len(s))
     cnt += 1    	
-
 print "...creating ./" + outfile
 #----OUTPUT----
 sys.stdout = open(outfile, 'w')
 
+sp_cnt = 1
 #HEADER
 print "restart\nexplicitmol\nT positions\nF velocities\nF wall charges\nF dipoles\nF full run log\nMolecules"  
 
 #MOLIDS PDB FILE
+#ANIONS
 sp_cnt = 1
 molit_cnt = 0
-for m in molecules.keys():
-	if m not in molwl:
-		for s in molecules[m]:
-			it_cnt = 1
-			for e in species[s]:
-				print str(molit_cnt + it_cnt).rjust(10) + str(sp_cnt).rjust(10)        
-				it_cnt += 1
-			sp_cnt += 1
-		molit_cnt += it_cnt-1
+for s in molecules["BF"]:
+    it_cnt = 1
+    for e in species[s]:
+        print str(molit_cnt + it_cnt).rjust(10) + str(sp_cnt).rjust(10)        
+        it_cnt+=1
+    sp_cnt += 1
+molit_cnt += it_cnt-1
+#CATIONS
+for s in molecules["BMI"]:
+    it_cnt = 1
+    for e in species[s]:
+        print str(molit_cnt + it_cnt).rjust(10) + str(sp_cnt).rjust(10)        
+        it_cnt+=1
+    sp_cnt += 1
+molit_cnt += it_cnt-1
+#ACN
+for s in molecules["AN"]:
+    it_cnt = 1
+    for e in species[s]:
+        print str(molit_cnt + it_cnt).rjust(10) + str(sp_cnt).rjust(10)        
+        it_cnt+=1
+    sp_cnt += 1
+molit_cnt += it_cnt-1
 
+#WALLS
 it_cnt = molit_cnt+1
 for m in molecules.keys():
 	if m in molwl:
@@ -106,18 +122,29 @@ for m in molecules.keys():
 
 #POSITIONS PDB
 print "Positions"
-for m in molecules.keys():
-	if m not in molwl:
-		for s in molecules[m]:
-			for e in species[s]:
-				fCoords = ang_to_atomic * foldPos(array((map(float,e))))
-				print str(fCoords[0]).rjust(20) + str(fCoords[1]).rjust(20) + str(fCoords[2]).rjust(20)
+#ANIONS
+for s in molecules["BF"]:
+    for e in species[s]:
+        fCoords = ang_to_atomic * foldPos(array((map(float,e))))
+        print str(fCoords[0]).rjust(20) + str(fCoords[1]).rjust(20) + str(fCoords[2]).rjust(20)
+#CATIONS
+for s in molecules["BMI"]:
+    for e in species[s]:
+        fCoords = ang_to_atomic * foldPos(array((map(float,e))))
+        print str(fCoords[0]).rjust(20) + str(fCoords[1]).rjust(20) + str(fCoords[2]).rjust(20)
+#ACN
+for s in molecules["AN"]:
+    for e in species[s]:
+        fCoords = ang_to_atomic * foldPos(array((map(float,e))))
+        print str(fCoords[0]).rjust(20) + str(fCoords[1]).rjust(20) + str(fCoords[2]).rjust(20)
+#POLARIZABLE WALL
 for m in molecules.keys():
 	if m in molwlPOL:
 		for s in molecules[m]:
 			for e in species[s]:
 				fCoords = ang_to_atomic * foldPos(array((map(float,e))))
 				print str(fCoords[0]).rjust(20) + str(fCoords[1]).rjust(20) + str(fCoords[2]).rjust(20)
+#NON-POLARIZABLE WALL
 for m in molecules.keys():
 	if m in molwlNONPOL:
 		for s in molecules[m]:

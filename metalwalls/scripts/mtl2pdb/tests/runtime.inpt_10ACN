@@ -1,56 +1,56 @@
-10      Number of steps in the run.
-353.000     Translational temperature.
+240997      Number of steps in the run.
+340.000     Translational temperature.
 1         Number of ionic molecular units.
 10           Number of species.
 2	    Number of anion species
 7	    Number of species allowed to move
 A		Name of species 1
-585		Number of species of type 1
+601		Number of species of type 1
 -0.78		Permanent charge on type 1 ions
 86.81		Atomic mass of type 1
 .false.		Polarizable ? 
 Im1          Name of Species 2
-585          Number of species of type 2.
-0.4374        Permanent charge on type 2 ions.
+601          Number of species of type 2.
+0.3591        Permanent charge on type 2 ions.
 67.07   Atomic mass of type 2.
 .false.      Polarizable ?
 Im2           Name of species 3
-585         Number of species of type 3.
-0.1578        Permanent charge on type 3 ions.
+601         Number of species of type 3.
+0.1888        Permanent charge on type 3 ions.
 15.04     Atomic mass of type 3.
 .false.      Polarizable ?
 Im3		Name of species 4
-585		Number of species 4
-0.1848		Permanent charge on type 4 ions
-57.12		Atomic mass of type 4
+601 	Number of species 4
+0.2321		Permanent charge on type 4 ions
+29.07		Atomic mass of type 4
 .false.		Polarizable ?
 N		Name of species 4
-1380            Number of species 4
+322            Number of species 4
 -0.398		Permanent charge on type 4 ions
 14.01		Atomic mass of type 4
 .false.		Polarizable ?
 C		Name of species 4
-1380         Number of species 4
+322         Number of species 4
 0.129		Permanent charge on type 4 ions
 12.01		Atomic mass of type 4
 .false.		Polarizable ?
 Me		Name of species 4
-1380           Number of species 4
+322           Number of species 4
 0.269		Permanent charge on type 4 ions
 15.04		Atomic mass of type 4
 .false.		Polarizable ?
 C1       Name of species 5
-1152          Number of species of type 5
+3821          Number of species of type 5
 .true.      constant potential? (if .false. then constant charge)
 0.000        wall potential (if previous line .false. then this is the charge)
 12.0     Atomic mass of type 5.
 C2       Name of species 6
-1152          Number of species of type 6
+3821          Number of species of type 6
 .true.      constant potential? (if .false. then constant charge)
 -0.000         wall potential (if previous line .false. then this is the charge)
 12.0     Atomic mass of type 6.
 P       Name of species 6
-6912          Number of species of type 6
+400          Number of species of type 6
 .false.      constant potential? (if .false. then constant charge)
 0.000        wall potential (if previous line .false. then this is the charge)
 12.0     Atomic mass of type 6.
