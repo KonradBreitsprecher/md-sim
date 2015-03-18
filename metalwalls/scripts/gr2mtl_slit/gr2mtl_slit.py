@@ -94,7 +94,7 @@ for s in molecules["BF"]:
     sp_cnt += 1
 molit_cnt += it_cnt-1
 #CATIONS
-for s in molecules["BMI"]:
+for s in molecules["BMIM"]:
     it_cnt = 1
     for e in species[s]:
         print str(molit_cnt + it_cnt).rjust(10) + str(sp_cnt).rjust(10)        
@@ -127,7 +127,7 @@ for s in molecules["BF"]:
         fCoords = ang_to_atomic * foldPos(array((map(float,e))))
         print str(fCoords[0]).rjust(20) + str(fCoords[1]).rjust(20) + str(fCoords[2]).rjust(20)
 #CATIONS
-for s in molecules["BMI"]:
+for s in molecules["BMIM"]:
     for e in species[s]:
         fCoords = ang_to_atomic * foldPos(array((map(float,e))))
         print str(fCoords[0]).rjust(20) + str(fCoords[1]).rjust(20) + str(fCoords[2]).rjust(20)
