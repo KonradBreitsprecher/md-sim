@@ -23,8 +23,12 @@ for runid in runIndices:
     #testrunFiles.sort(key=os.path.getmtime)
 
     #SANITY CHECKS
+<<<<<<< HEAD
     #for neededFile in [runOutFile,runDensityFiles[-1]]:
     for neededFile in [runDensityFiles[-1]]:
+=======
+    for neededFile in [runOutFile,runDensityFiles[-1]]:
+>>>>>>> 7d5aa5bc142fc96255eeefafcbee2d4c237a8f49
         if not os.path.isfile(neededFile):
             sys.exit("Could not find " + neededFile)
         elif os.stat(neededFile).st_size == 0:
