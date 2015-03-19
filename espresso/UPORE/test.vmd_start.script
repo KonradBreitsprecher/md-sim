@@ -1,0 +1,8 @@
+logfile vmd.log
+mol load vsf test.vsf
+rotate stop
+mol modstyle 0 0 CPK 1.800000 0.300000 8.000000 6.000000
+mol modcolor 0 0 Name
+imd connect yak.icp.uni-stuttgart.de 10000
+imd transfer 1
+imd keep 1
