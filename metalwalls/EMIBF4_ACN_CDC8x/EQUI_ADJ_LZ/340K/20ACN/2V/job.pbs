@@ -1,0 +1,28 @@
+#!/bin/bash
+#PBS -N 340K_20ACN_2V
+#PBS -l nodes=50:ppn=24
+#PBS -l walltime=04:00:00
+
+INPUTDIR=/zhome/academic/HLRS/icp/icpkonra/git/md-sim/metalwalls/EMIBF4_ACN_CDC8x/EQUI_ADJ_LZ/340K/20ACN/2V
+JOB="340K_20ACN_2V"
+mkdir -p $HOME/data/EQUI_ADJ_LZ/$JOB
+cd $HOME/data/EQUI_ADJ_LZ/$JOB
+NRUNS=$(ls -lR | grep ^d | wc -l)
+DATADIR="$(expr $NRUNS + 1)"
+mkdir $DATADIR
+cd $DATADIR
+
+if [ "$NRUNS" == "0" ]; then
+   RESTARTFILE="$INPUTDIR/restart.dat"
+else
+   if [ -a ../$NRUNS/testout.rst* ]; then
+      RESTARTFILE="$(ls -t ../$NRUNS/testout.rst* | head -1)"
+   else
+      RESTARTFILE="../$NRUNS/restart.dat"
+   fi
+fi
+
+cp $INPUTDIR/potential.inpt $INPUTDIR/runtime.inpt ./
+cp $RESTARTFILE ./restart.dat
+
+aprun -n 1200 -N 24 $HOME/src/metalwalls/bin/metalwalls.exe

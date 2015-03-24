@@ -1,0 +1,2672 @@
+                Metal Walls Pim
+ built
+         Built: 2015-02-10 11:57:45.670261
+         
+         No local modification
+         On machine: eslogin008
+         With environment:
+         Currently Loaded Modulefiles:
+           1) modules/3.2.10.2
+           2) eswrap/1.1.0-1.020200.1130.0
+           3) switch/1.0-1.0502.54233.2.96.ari
+           4) craype-network-aries
+           5) craype/2.2.1
+           6) cce/8.3.8
+           7) cray-libsci/13.0.3
+           8) udreg/2.3.2-1.0502.9275.1.12.ari
+           9) ugni/5.0-1.0502.9685.4.24.ari
+          10) pmi/5.0.6-1.0000.10439.140.2.ari
+          11) dmapp/7.0.1-1.0502.9501.5.219.ari
+          12) gni-headers/3.0-1.0502.9684.5.2.ari
+          13) xpmem/0.1-2.0502.55507.3.2.ari
+          14) dvs/2.5_0.9.0-1.0502.1873.1.145.ari
+          15) alps/5.2.1-2.0502.9041.11.6.ari
+          16) rca/1.0.0-2.0502.53711.3.127.ari
+          17) atp/1.7.5
+          18) PrgEnv-cray/5.2.40
+          19) craype-haswell
+          20) cray-mpich/7.1.2
+          21) torque/4.2.9
+          22) moab/7.2.9-2014091214-96b8ec34-b9-SUSE11
+          23) system/ws_tools
+          24) system/hlrs-defaults
+          25) fftw/3.3.0.4
+          26) tools/autotools/gnu
+ 
+        Now includes corrections from
+        Todd Gingrich's master thesis
+        and a predictor step for the RIM
+        Now includes the possibility of having
+        constant potential and constant charge species together
+        Does not write displacements and velocities for fixed species
+        Code optimized for memory use
+        Now includes linear molecules with 3 sites
+        MH: reduced memory footprint and vectorization
+ 
+ 
+ opening readin file
+    Mass of species    1  86.8100
+    Mass of species    2  67.0700
+    Mass of species    3  15.0400
+    Mass of species    4  29.0700
+    Doing a constant potential run
+      potential convergence parameter  5.000E-07
+    Time step 82.682 au
+    Runtype rim            
+    Runtype2 epp            
+    Ewald gaussian smearing width   5.600
+    Ewald cutoff radius  41.200
+ If doing a constant potential run, check that the two electrodes are
+ distant by more than this value! -- Should be the case
+    Short range interaction cutoff radius  41.200
+    Applying a Nose-Hooover thermostat with relaxation parameter  5000.
+    Using an orthorhombic cell
+    Number of bins for structure factor  1000
+    Calculating mean square displacements
+    Shake tollerance  1.00000000000000002E-8
+ 
+ Defining  2  molecules
+ Using Verlet with Shake with 3  constraints
+    A          contains   1 atoms with mass  86.810
+    Im41       contains   3 atoms with mass 111.180
+      Harmonic intramolecular potentials
+      Bond constraints
+        2    3      5.11662603
+        2    4      5.71698342
+        3    4      9.85279425
+ 
+    Warning: You have fewer LJ interaction pairs in the potential file than you have particle pairs.
+    Lennard-Jones Potentials.
+      File contains  22  pairs of interactions.
+          atom1     atom2         A             B        ljshift     
+              A         A     0.72493E+09    1891.7      -0.38675E-06
+              A       Im1     0.54136E+09    1541.2      -0.31510E-06
+              A       Im2     0.50746E+08    288.96      -0.59080E-07
+              A       Im3     0.37677E+09    1072.6      -0.21930E-06
+              A        C1     0.38170E+08    224.06      -0.45810E-07
+              A        C2     0.38170E+08    224.06      -0.45810E-07
+              A         P     0.38170E+08    224.06      -0.45810E-07
+            Im1       Im1     0.40324E+09    1254.1      -0.25640E-06
+            Im1       Im2     0.36982E+08    232.57      -0.47551E-07
+            Im1       Im3     0.28064E+09    872.80      -0.17845E-06
+            Im1        C1     0.27789E+08    180.24      -0.36852E-07
+            Im1        C2     0.27789E+08    180.24      -0.36852E-07
+            Im1         P     0.27789E+08    180.24      -0.36852E-07
+            Im2       Im2     0.28118E+07    39.271      -0.80293E-08
+            Im2       Im3     0.25739E+08    161.86      -0.33094E-07
+            Im2        C1     0.20943E+07    30.301      -0.61953E-08
+            Im2        C2     0.20943E+07    30.301      -0.61953E-08
+            Im2         P     0.20943E+07    30.301      -0.61953E-08
+            Im3       Im3     0.19532E+09    607.45      -0.12419E-06
+            Im3        C1     0.19341E+08    125.44      -0.25648E-07
+            Im3        C2     0.19341E+08    125.44      -0.25648E-07
+            Im3         P     0.19341E+08    125.44      -0.25648E-07
+ 
+ **** Run-time parameters read in ****
+ 
+ Total number of ions 10442
+ Number of melt ions 2400
+     600 A
+     600 Im1
+     600 Im2
+     600 Im3
+ Number of wall ions 8042
+     3821 C1
+     3821 C2
+     400 P
+ Ewald smearing width 6.79611650485436869E-2
+    erfc(eta.rcut) is  7.50131946654591079E-5
+ Wall Gaussian width 0.95523465699999999
+ 
+ **** Internal variables set up ****
+ 
+ Reading in positions
+ restartfile contains labels
+ Assuming ion type from ion number
+ Explicit molecular membership/order given
+ Reading positions..
+ Read all  10442 positions
+ Warning: No dipole variables read in,
+          and no annealing is scheduled.
+boxlengths   82.541      82.541      277.89    
+ 
+ **** Run restarted ****
+ 
+    Temperature is defined as 2.K.E./kB(3Nm - 3 - nconstraintot) where
+     Nm is the number of moveable ions and nconstraintot is the total number of constraints
+     Total number of contraints, nconstraintot =  1800
+ 
+ 
+  Calculating initial wall atom charges
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 71  steps
+  Mean potential wall species  5  0.36749974E-01
+  Total charge wall species  5  0.43326845    
+  Mean potential wall species  6 -0.36750025E-01
+  Total charge wall species  6 -0.42989431    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -2.40907617911271088E-8
+ Melt charge NaN
+ Wall charge 3.37414005883734935E-3
+ Total charge NaN
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ 
+  Calculating forces
+ Coulomb energy -60.430852295902426
+ Dispersion energy  0.
+ vqeng  -3.17212312917261249E-2
+ Short range energy  -11.025496417762863
+ main loop begun
+ 
+ Step 2*1
+ Done  50  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 72  steps
+  Mean potential wall species  5  0.36750019E-01
+  Total charge wall species  5  0.43396856    
+  Mean potential wall species  6 -0.36749967E-01
+  Total charge wall species  6 -0.43084274    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 2.48188965782184871E-8
+ Melt charge 0.
+ Wall charge 3.12582362840896355E-3
+ Total charge 3.12582362840896355E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.398283718235902
+ Dispersion energy  0.
+ vqeng  -3.17818154670920297E-2
+ Short range energy  -10.998719113321348
+ Velocity convergence  5
+ 
+ Step 2*2
+ Done  36  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 70  steps
+  Mean potential wall species  5  0.36750018E-01
+  Total charge wall species  5  0.43412961    
+  Mean potential wall species  6 -0.36749958E-01
+  Total charge wall species  6 -0.43100053    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 2.87129687359811212E-8
+ Melt charge 0.
+ Wall charge 3.12908766696956553E-3
+ Total charge 3.12908766696956553E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.398039144181006
+ Dispersion energy  0.
+ vqeng  -3.1793532647643577E-2
+ Short range energy  -11.003617497832302
+ Velocity convergence  4
+ 
+ Step 2*3
+ Done  36  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 66  steps
+  Mean potential wall species  5  0.36749997E-01
+  Total charge wall species  5  0.43440077    
+  Mean potential wall species  6 -0.36749996E-01
+  Total charge wall species  6 -0.43126663    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.86881876452646804E-10
+ Melt charge 0.
+ Wall charge 3.13414590138161309E-3
+ Total charge 3.13414590138161309E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.397631101025603
+ Dispersion energy  0.
+ vqeng  -3.18132769768794121E-2
+ Short range energy  -11.01173595053185
+ Velocity convergence  3
+ 
+ Step 2*4
+ Done  36  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 59  steps
+  Mean potential wall species  5  0.36750014E-01
+  Total charge wall species  5  0.43478035    
+  Mean potential wall species  6 -0.36750012E-01
+  Total charge wall species  6 -0.43164001    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.13220057464401502E-9
+ Melt charge 0.
+ Wall charge 3.14034252343298181E-3
+ Total charge 3.14034252343298181E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.397070679022804
+ Dispersion energy  0.
+ vqeng  -3.1840948093741217E-2
+ Short range energy  -11.022993192402378
+ Velocity convergence  4
+ 
+ Step 2*5
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 48  steps
+  Mean potential wall species  5  0.36750024E-01
+  Total charge wall species  5  0.43526735    
+  Mean potential wall species  6 -0.36750027E-01
+  Total charge wall species  6 -0.43212087    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -1.39075968475687777E-9
+ Melt charge 0.
+ Wall charge 3.14647400911516328E-3
+ Total charge 3.14647400911516328E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.39635888828991
+ Dispersion energy  0.
+ vqeng  -3.18765171889269089E-2
+ Short range energy  -11.037273349768425
+ Velocity convergence  4
+ 
+ Step 2*6
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 25  steps
+  Mean potential wall species  5  0.36750001E-01
+  Total charge wall species  5  0.43586092    
+  Mean potential wall species  6 -0.36749986E-01
+  Total charge wall species  6 -0.43270453    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 7.34928789250885645E-9
+ Melt charge 0.
+ Wall charge 3.15639081790219933E-3
+ Total charge 3.15639081790219933E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.395499920084106
+ Dispersion energy  0.
+ vqeng  -3.19197801456301417E-2
+ Short range energy  -11.054438187755405
+ Velocity convergence  4
+ 
+ Step 2*7
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36750000E-01
+  Total charge wall species  5  0.43656562    
+  Mean potential wall species  6 -0.36750004E-01
+  Total charge wall species  6 -0.43340034    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -1.97126478653353598E-9
+ Melt charge 0.
+ Wall charge 3.1652802641494171E-3
+ Total charge 3.1652802641494171E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.394509259554248
+ Dispersion energy  0.
+ vqeng  -3.19712491727989004E-2
+ Short range energy  -11.074316870835837
+ Velocity convergence  4
+ 
+ Step 2*8
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 16  steps
+  Mean potential wall species  5  0.36750003E-01
+  Total charge wall species  5  0.43737758    
+  Mean potential wall species  6 -0.36750003E-01
+  Total charge wall species  6 -0.43419993    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -1.35841612197882172E-10
+ Melt charge 0.
+ Wall charge 3.17764865350589343E-3
+ Total charge 3.17764865350589343E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.393387488632555
+ Dispersion energy  0.
+ vqeng  -3.20304736924365563E-2
+ Short range energy  -11.096740556703651
+ Velocity convergence  3
+ 
+ Step 2*9
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36750003E-01
+  Total charge wall species  5  0.43829627    
+  Mean potential wall species  6 -0.36750003E-01
+  Total charge wall species  6 -0.43510645    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 2.35810447019086932E-11
+ Melt charge 0.
+ Wall charge 3.18981682308744352E-3
+ Total charge 3.18981682308744352E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.392148529004992
+ Dispersion energy  0.
+ vqeng  -3.20975499435878081E-2
+ Short range energy  -11.121501532752083
+ Velocity convergence  5
+ 
+ Step 2*10
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36749990E-01
+  Total charge wall species  5  0.43931928    
+  Mean potential wall species  6 -0.36749992E-01
+  Total charge wall species  6 -0.43611684    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -1.08357522644593221E-9
+ Melt charge 0.
+ Wall charge 3.20243413588755521E-3
+ Total charge 3.20243413588755521E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.390809548985459
+ Dispersion energy  0.
+ vqeng  -3.21722774365718472E-2
+ Short range energy  -11.148404906224831
+ Velocity convergence  5
+ 
+ Step 2*11
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749995E-01
+  Total charge wall species  5  0.44045494    
+  Mean potential wall species  6 -0.36749992E-01
+  Total charge wall species  6 -0.43723817    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.10282299707971893E-9
+ Melt charge 0.
+ Wall charge 3.21676800303688504E-3
+ Total charge 3.21676800303688504E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.389380848205775
+ Dispersion energy  0.
+ vqeng  -3.22552219109671912E-2
+ Short range energy  -11.177230785264737
+ Velocity convergence  4
+ 
+ Step 2*12
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 10  steps
+  Mean potential wall species  5  0.36749988E-01
+  Total charge wall species  5  0.44169621    
+  Mean potential wall species  6 -0.36750024E-01
+  Total charge wall species  6 -0.43846681    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -1.73470152631867666E-8
+ Melt charge 0.
+ Wall charge 3.22939756945883616E-3
+ Total charge 3.22939756945883616E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.387871282680763
+ Dispersion energy  0.
+ vqeng  -3.23459907458409288E-2
+ Short range energy  -11.207764028065835
+ Velocity convergence  4
+ 
+ Step 2*13
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749999E-01
+  Total charge wall species  5  0.44304207    
+  Mean potential wall species  6 -0.36749998E-01
+  Total charge wall species  6 -0.43979818    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 5.7393058464668947E-10
+ Melt charge 0.
+ Wall charge 3.24389666816743416E-3
+ Total charge 3.24389666816743416E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.386295579025159
+ Dispersion energy  0.
+ vqeng  -3.2444379193596766E-2
+ Short range energy  -11.239781091858177
+ Velocity convergence  5
+ 
+ Step 2*14
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 13  steps
+  Mean potential wall species  5  0.36749923E-01
+  Total charge wall species  5  0.44449561    
+  Mean potential wall species  6 -0.36749920E-01
+  Total charge wall species  6 -0.44123782    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.42758058569651851E-9
+ Melt charge 0.
+ Wall charge 3.25779335821302363E-3
+ Total charge 3.25779335821302363E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.384668780422203
+ Dispersion energy  0.
+ vqeng  -3.25507034537349388E-2
+ Short range energy  -11.273077205974932
+ Velocity convergence  5
+ 
+ Step 2*15
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 17  steps
+  Mean potential wall species  5  0.36749997E-01
+  Total charge wall species  5  0.44605039    
+  Mean potential wall species  6 -0.36749998E-01
+  Total charge wall species  6 -0.44278038    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -1.35736344588820012E-10
+ Melt charge 0.
+ Wall charge 3.27001370888269083E-3
+ Total charge 3.27001370888269083E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.383002620731574
+ Dispersion energy  0.
+ vqeng  -3.26645307598461068E-2
+ Short range energy  -11.307447512968245
+ Velocity convergence  5
+ 
+ Step 2*16
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 16  steps
+  Mean potential wall species  5  0.36750000E-01
+  Total charge wall species  5  0.44771222    
+  Mean potential wall species  6 -0.36749997E-01
+  Total charge wall species  6 -0.44442883    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.45820416355610809E-9
+ Melt charge 0.
+ Wall charge 3.28339398560223428E-3
+ Total charge 3.28339398560223428E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.381318734949048
+ Dispersion energy  0.
+ vqeng  -3.27861835547086505E-2
+ Short range energy  -11.342682082713281
+ Velocity convergence  5
+ 
+ Step 2*17
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36749998E-01
+  Total charge wall species  5  0.44947573    
+  Mean potential wall species  6 -0.36749997E-01
+  Total charge wall species  6 -0.44618157    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.68129311123197452E-10
+ Melt charge 0.
+ Wall charge 3.29416223696393784E-3
+ Total charge 3.29416223696393784E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.379633471067869
+ Dispersion energy  0.
+ vqeng  -3.2915405899001382E-2
+ Short range energy  -11.378599531124252
+ Velocity convergence  5
+ 
+ Step 2*18
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 12  steps
+  Mean potential wall species  5  0.36750021E-01
+  Total charge wall species  5  0.45134485    
+  Mean potential wall species  6 -0.36750064E-01
+  Total charge wall species  6 -0.44804141    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -2.07092586017382539E-8
+ Melt charge 0.
+ Wall charge 3.30343122781884269E-3
+ Total charge 3.30343122781884269E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.377944491398047
+ Dispersion energy  0.
+ vqeng  -3.30524450508308809E-2
+ Short range energy  -11.415029733419528
+ Velocity convergence  5
+ 
+ Step 2*19
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36750002E-01
+  Total charge wall species  5  0.45331201    
+  Mean potential wall species  6 -0.36750003E-01
+  Total charge wall species  6 -0.44999913    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -6.10150044308956774E-10
+ Melt charge 0.
+ Wall charge 3.31288170202909127E-3
+ Total charge 3.31288170202909127E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.376276219411565
+ Dispersion energy  0.
+ vqeng  -3.31966843320745802E-2
+ Short range energy  -11.451811313122176
+ Velocity convergence  5
+ 
+ Step 2*20
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36750001E-01
+  Total charge wall species  5  0.45537995    
+  Mean potential wall species  6 -0.36750000E-01
+  Total charge wall species  6 -0.45205977    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 3.33408890835724931E-10
+ Melt charge 0.
+ Wall charge 3.32017929163774816E-3
+ Total charge 3.32017929163774816E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.374638848239442
+ Dispersion energy  0.
+ vqeng  -3.33484095503004743E-2
+ Short range energy  -11.488799034779163
+ Velocity convergence  5
+ 
+ Step 2*21
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750042E-01
+  Total charge wall species  5  0.45755042    
+  Mean potential wall species  6 -0.36750035E-01
+  Total charge wall species  6 -0.45422359    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 3.22088349958926598E-9
+ Melt charge 0.
+ Wall charge 3.32682782026749724E-3
+ Total charge 3.32682782026749724E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.373049570970508
+ Dispersion energy  0.
+ vqeng  -3.35076947820742779E-2
+ Short range energy  -11.525835433796299
+ Velocity convergence  5
+ 
+ Step 2*22
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 12  steps
+  Mean potential wall species  5  0.36749858E-01
+  Total charge wall species  5  0.45981376    
+  Mean potential wall species  6 -0.36749868E-01
+  Total charge wall species  6 -0.45648380    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -4.79663367869773406E-9
+ Melt charge 0.
+ Wall charge 3.32996647875660745E-3
+ Total charge 3.32996647875660745E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.371523513130668
+ Dispersion energy  0.
+ vqeng  -3.36739352580395293E-2
+ Short range energy  -11.562819977975694
+ Velocity convergence  5
+ 
+ Step 2*23
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750059E-01
+  Total charge wall species  5  0.46217808    
+  Mean potential wall species  6 -0.36750054E-01
+  Total charge wall species  6 -0.45884713    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 2.39185674467385378E-9
+ Melt charge 0.
+ Wall charge 3.33095099342228806E-3
+ Total charge 3.33095099342228806E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.370071492951148
+ Dispersion energy  0.
+ vqeng  -3.3847676672329019E-2
+ Short range energy  -11.599621995022908
+ Velocity convergence  5
+ 
+ Step 2*24
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750006E-01
+  Total charge wall species  5  0.46463777    
+  Mean potential wall species  6 -0.36750002E-01
+  Total charge wall species  6 -0.46130897    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 2.1435862881607042E-9
+ Melt charge 0.
+ Wall charge 3.32879651472078875E-3
+ Total charge 3.32879651472078875E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.368700741737044
+ Dispersion energy  0.
+ vqeng  -3.40285427016297909E-2
+ Short range energy  -11.636154736403235
+ Velocity convergence  5
+ 
+ Step 2*25
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 12  steps
+  Mean potential wall species  5  0.36750068E-01
+  Total charge wall species  5  0.46719280    
+  Mean potential wall species  6 -0.36750119E-01
+  Total charge wall species  6 -0.46386793    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -2.43481025027489845E-8
+ Melt charge 0.
+ Wall charge 3.32486272117943349E-3
+ Total charge 3.32486272117943349E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.367434648824172
+ Dispersion energy  0.
+ vqeng  -3.4216481752973045E-2
+ Short range energy  -11.672322126382438
+ Velocity convergence  5
+ 
+ Step 2*26
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36750006E-01
+  Total charge wall species  5  0.46984117    
+  Mean potential wall species  6 -0.36750007E-01
+  Total charge wall species  6 -0.46652448    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -3.2872580973466787E-10
+ Melt charge 0.
+ Wall charge 3.31668735556961414E-3
+ Total charge 3.31668735556961414E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.366269146689604
+ Dispersion energy  0.
+ vqeng  -3.44114374810222737E-2
+ Short range energy  -11.708030732756434
+ Velocity convergence  5
+ 
+ Step 2*27
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750009E-01
+  Total charge wall species  5  0.47258057    
+  Mean potential wall species  6 -0.36750005E-01
+  Total charge wall species  6 -0.46927261    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.96357067342683966E-9
+ Melt charge 0.
+ Wall charge 3.30795695394048295E-3
+ Total charge 3.30795695394048295E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.365217936328321
+ Dispersion energy  0.
+ vqeng  -3.46131045281294417E-2
+ Short range energy  -11.74321090832618
+ Velocity convergence  4
+ 
+ Step 2*28
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 16  steps
+  Mean potential wall species  5  0.36750001E-01
+  Total charge wall species  5  0.47541107    
+  Mean potential wall species  6 -0.36750000E-01
+  Total charge wall species  6 -0.47211661    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 4.9811695231984384E-10
+ Melt charge 0.
+ Wall charge 3.29445383555762583E-3
+ Total charge 3.29445383555762583E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.364293387210971
+ Dispersion energy  0.
+ vqeng  -3.48216421993816291E-2
+ Short range energy  -11.777785602388214
+ Velocity convergence  4
+ 
+ Step 2*29
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 16  steps
+  Mean potential wall species  5  0.36749994E-01
+  Total charge wall species  5  0.47832903    
+  Mean potential wall species  6 -0.36749996E-01
+  Total charge wall species  6 -0.47505195    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -7.93918824518076326E-10
+ Melt charge 0.
+ Wall charge 3.27708010472305133E-3
+ Total charge 3.27708010472305133E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.363495860986198
+ Dispersion energy  0.
+ vqeng  -3.50367511614387908E-2
+ Short range energy  -11.811686609338622
+ Velocity convergence  5
+ 
+ Step 2*30
+ Done  36  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36749999E-01
+  Total charge wall species  5  0.48133840    
+  Mean potential wall species  6 -0.36749997E-01
+  Total charge wall species  6 -0.47807947    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.06965829344884461E-9
+ Melt charge 0.
+ Wall charge 3.25892384621331854E-3
+ Total charge 3.25892384621331854E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.362834563546514
+ Dispersion energy  0.
+ vqeng  -3.52586066392675188E-2
+ Short range energy  -11.844869499678891
+ Velocity convergence  5
+ 
+ Step 2*31
+ Done  36  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750010E-01
+  Total charge wall species  5  0.48443363    
+  Mean potential wall species  6 -0.36750008E-01
+  Total charge wall species  6 -0.48119799    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.11275543083153872E-9
+ Melt charge 0.
+ Wall charge 3.23563950691921343E-3
+ Total charge 3.23563950691921343E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.362327803187959
+ Dispersion energy  0.
+ vqeng  -3.54869623112522153E-2
+ Short range energy  -11.877240923227815
+ Velocity convergence  5
+ 
+ Step 2*32
+ Done  36  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749969E-01
+  Total charge wall species  5  0.48761257    
+  Mean potential wall species  6 -0.36749970E-01
+  Total charge wall species  6 -0.48440365    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -7.3953297256409149E-10
+ Melt charge 0.
+ Wall charge 3.20892047867468722E-3
+ Total charge 3.20892047867468722E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.361976836545921
+ Dispersion energy  0.
+ vqeng  -3.57215963132329201E-2
+ Short range energy  -11.90875889736586
+ Velocity convergence  5
+ 
+ Step 2*33
+ Done  36  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750017E-01
+  Total charge wall species  5  0.49087733    
+  Mean potential wall species  6 -0.36750016E-01
+  Total charge wall species  6 -0.48769780    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 3.06183854971882456E-10
+ Melt charge 0.
+ Wall charge 3.17953520427532998E-3
+ Total charge 3.17953520427532998E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.361780914245003
+ Dispersion energy  0.
+ vqeng  -3.59626359929135567E-2
+ Short range energy  -11.939376487537913
+ Velocity convergence  3
+ 
+ Step 2*34
+ Done  36  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36750004E-01
+  Total charge wall species  5  0.49422205    
+  Mean potential wall species  6 -0.36750003E-01
+  Total charge wall species  6 -0.49107548    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 5.62430458130359305E-10
+ Melt charge 0.
+ Wall charge 3.14657223319630974E-3
+ Total charge 3.14657223319630974E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.361744474938938
+ Dispersion energy  0.
+ vqeng  -3.62096842960087234E-2
+ Short range energy  -11.969029238093031
+ Velocity convergence  4
+ 
+ Step 2*35
+ Done  36  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750003E-01
+  Total charge wall species  5  0.49764628    
+  Mean potential wall species  6 -0.36750002E-01
+  Total charge wall species  6 -0.49453647    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 5.93897474296690106E-10
+ Melt charge 0.
+ Wall charge 3.10981674030075261E-3
+ Total charge 3.10981674030075261E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.36186862596918
+ Dispersion energy  0.
+ vqeng  -3.64627160584523324E-2
+ Short range energy  -11.997686026359414
+ Velocity convergence  4
+ 
+ Step 2*36
+ Done  36  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749996E-01
+  Total charge wall species  5  0.50115007    
+  Mean potential wall species  6 -0.36749993E-01
+  Total charge wall species  6 -0.49807986    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.67457276059577438E-9
+ Melt charge 0.
+ Wall charge 3.07020905994351279E-3
+ Total charge 3.07020905994351279E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.362167272459274
+ Dispersion energy  0.
+ vqeng  -3.67216997764914857E-2
+ Short range energy  -12.025278874294376
+ Velocity convergence  4
+ 
+ Step 2*37
+ Done  36  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750004E-01
+  Total charge wall species  5  0.50472998    
+  Mean potential wall species  6 -0.36750007E-01
+  Total charge wall species  6 -0.50170478    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -1.26360175936714215E-9
+ Melt charge 0.
+ Wall charge 3.02520718520307708E-3
+ Total charge 3.02520718520307708E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.362648008665104
+ Dispersion energy  0.
+ vqeng  -3.69864774087099307E-2
+ Short range energy  -12.051783066950435
+ Velocity convergence  4
+ 
+ Step 2*38
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749964E-01
+  Total charge wall species  5  0.50838370    
+  Mean potential wall species  6 -0.36749961E-01
+  Total charge wall species  6 -0.50540497    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.34175858654688496E-9
+ Melt charge 0.
+ Wall charge 2.97872500120985317E-3
+ Total charge 2.97872500120985317E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.363304425390027
+ Dispersion energy  0.
+ vqeng  -3.7256733732511968E-2
+ Short range energy  -12.077149120861209
+ Velocity convergence  4
+ 
+ Step 2*39
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749989E-01
+  Total charge wall species  5  0.51211395    
+  Mean potential wall species  6 -0.36749991E-01
+  Total charge wall species  6 -0.50918574    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -7.48581354027243201E-10
+ Melt charge 0.
+ Wall charge 2.92821783595684226E-3
+ Total charge 2.92821783595684226E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.36413880392341
+ Dispersion energy  0.
+ vqeng  -3.75327636834082573E-2
+ Short range energy  -12.101365594477169
+ Velocity convergence  4
+ 
+ Step 2*40
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36750003E-01
+  Total charge wall species  5  0.51591658    
+  Mean potential wall species  6 -0.36750002E-01
+  Total charge wall species  6 -0.51304100    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 7.32034691883253381E-10
+ Melt charge 0.
+ Wall charge 2.87557839475183208E-3
+ Total charge 2.87557839475183208E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.365153795980063
+ Dispersion energy  0.
+ vqeng  -3.78141911508716733E-2
+ Short range energy  -12.124400834718882
+ Velocity convergence  4
+ 
+ Step 2*41
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750001E-01
+  Total charge wall species  5  0.51978604    
+  Mean potential wall species  6 -0.36750003E-01
+  Total charge wall species  6 -0.51696793    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -9.64620779847143521E-10
+ Melt charge 0.
+ Wall charge 2.81810731454795738E-3
+ Total charge 2.81810731454795738E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.366343409268879
+ Dispersion energy  0.
+ vqeng  -3.81007084983342945E-2
+ Short range energy  -12.146233945005815
+ Velocity convergence  4
+ 
+ Step 2*42
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750045E-01
+  Total charge wall species  5  0.52372345    
+  Mean potential wall species  6 -0.36750045E-01
+  Total charge wall species  6 -0.52096551    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.3223029124063829E-11
+ Melt charge 0.
+ Wall charge 2.75793959375275621E-3
+ Total charge 2.75793959375275621E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.367705081794043
+ Dispersion energy  0.
+ vqeng  -3.8392319237273452E-2
+ Short range energy  -12.166836448109771
+ Velocity convergence  4
+ 
+ Step 2*43
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 13  steps
+  Mean potential wall species  5  0.36750212E-01
+  Total charge wall species  5  0.52773103    
+  Mean potential wall species  6 -0.36750175E-01
+  Total charge wall species  6 -0.52503592    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.76782288869163185E-8
+ Melt charge 0.
+ Wall charge 2.69511200646646576E-3
+ Total charge 2.69511200646646576E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.369259538747073
+ Dispersion energy  0.
+ vqeng  -3.86891851497386252E-2
+ Short range energy  -12.186220154978685
+ Velocity convergence  3
+ 
+ Step 2*44
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36750005E-01
+  Total charge wall species  5  0.53180044    
+  Mean potential wall species  6 -0.36750005E-01
+  Total charge wall species  6 -0.52917121    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -1.07231474170752036E-10
+ Melt charge 0.
+ Wall charge 2.62923554089120048E-3
+ Total charge 2.62923554089120048E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.370990164967459
+ Dispersion energy  0.
+ vqeng  -3.89907081808424164E-2
+ Short range energy  -12.204361469740412
+ Velocity convergence  3
+ 
+ Step 2*45
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 16  steps
+  Mean potential wall species  5  0.36749996E-01
+  Total charge wall species  5  0.53593065    
+  Mean potential wall species  6 -0.36749999E-01
+  Total charge wall species  6 -0.53337079    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -1.63218719669038157E-9
+ Melt charge 0.
+ Wall charge 2.55986246344164226E-3
+ Total charge 2.55986246344164226E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.372906236529865
+ Dispersion energy  0.
+ vqeng  -3.92968278512629485E-2
+ Short range energy  -12.221266110197448
+ Velocity convergence  3
+ 
+ Step 2*46
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36750001E-01
+  Total charge wall species  5  0.54012548    
+  Mean potential wall species  6 -0.36750003E-01
+  Total charge wall species  6 -0.53763640    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -8.88731628039158549E-10
+ Melt charge 0.
+ Wall charge 2.48907783423096829E-3
+ Total charge 2.48907783423096829E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.374993161115377
+ Dispersion energy  0.
+ vqeng  -3.96077488879188477E-2
+ Short range energy  -12.236942437715591
+ Velocity convergence  3
+ 
+ Step 2*47
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749998E-01
+  Total charge wall species  5  0.54437858    
+  Mean potential wall species  6 -0.36750004E-01
+  Total charge wall species  6 -0.54196402    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -2.81010407585278072E-9
+ Melt charge 0.
+ Wall charge 2.4145559328332955E-3
+ Total charge 2.4145559328332955E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.377253857847094
+ Dispersion energy  0.
+ vqeng  -3.9923090638217737E-2
+ Short range energy  -12.251395860781932
+ Velocity convergence  3
+ 
+ Step 2*48
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749998E-01
+  Total charge wall species  5  0.54868736    
+  Mean potential wall species  6 -0.36749997E-01
+  Total charge wall species  6 -0.54634738    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 5.03008448874238438E-10
+ Melt charge 0.
+ Wall charge 2.33997039417130348E-3
+ Total charge 2.33997039417130348E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.379677581970924
+ Dispersion energy  0.
+ vqeng  -4.02425266840721885E-2
+ Short range energy  -12.26465089627985
+ Velocity convergence  4
+ 
+ Step 2*49
+ Done  33  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 12  steps
+  Mean potential wall species  5  0.36750132E-01
+  Total charge wall species  5  0.55305648    
+  Mean potential wall species  6 -0.36749988E-01
+  Total charge wall species  6 -0.55079514    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 6.8606458976442872E-8
+ Melt charge 0.
+ Wall charge 2.26133741810585764E-3
+ Total charge 2.26133741810585764E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.382266790774246
+ Dispersion energy  0.
+ vqeng  -4.05665470331860595E-2
+ Short range energy  -12.276723355013866
+ Velocity convergence  4
+ 
+ Step 2*50
+ Done  33  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36749997E-01
+  Total charge wall species  5  0.55747492    
+  Mean potential wall species  6 -0.36749997E-01
+  Total charge wall species  6 -0.55529308    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -1.02788203763345939E-10
+ Melt charge 0.
+ Wall charge 2.18184488184988701E-3
+ Total charge 2.18184488184988701E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.385016681969816
+ Dispersion energy  0.
+ vqeng  -4.08942240924077272E-2
+ Short range energy  -12.287624948635457
+ Velocity convergence  4
+ 
+ Step 2*51
+ Done  33  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 16  steps
+  Mean potential wall species  5  0.36750002E-01
+  Total charge wall species  5  0.56194787    
+  Mean potential wall species  6 -0.36749998E-01
+  Total charge wall species  6 -0.55984690    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.92378823005082509E-9
+ Melt charge 0.
+ Wall charge 2.10097357641786386E-3
+ Total charge 2.10097357641786386E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.387921869190208
+ Dispersion energy  0.
+ vqeng  -4.12259580086940247E-2
+ Short range energy  -12.297406124806688
+ Velocity convergence  4
+ 
+ Step 2*52
+ Done  33  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36749997E-01
+  Total charge wall species  5  0.56647034    
+  Mean potential wall species  6 -0.36749995E-01
+  Total charge wall species  6 -0.56445257    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 9.92985488648994309E-10
+ Melt charge 0.
+ Wall charge 2.01777408071840414E-3
+ Total charge 2.01777408071840414E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.390975219685821
+ Dispersion energy  0.
+ vqeng  -4.1561416850242533E-2
+ Short range energy  -12.306074728038888
+ Velocity convergence  3
+ 
+ Step 2*53
+ Done  33  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749997E-01
+  Total charge wall species  5  0.57104246    
+  Mean potential wall species  6 -0.36749991E-01
+  Total charge wall species  6 -0.56910875    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 2.65233146444999799E-9
+ Melt charge 0.
+ Wall charge 1.93370824036021016E-3
+ Total charge 1.93370824036021016E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.394179424718729
+ Dispersion energy  0.
+ vqeng  -4.19005567328067097E-2
+ Short range energy  -12.313657418116467
+ Velocity convergence  3
+ 
+ Step 2*54
+ Done  33  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749999E-01
+  Total charge wall species  5  0.57566155    
+  Mean potential wall species  6 -0.36750001E-01
+  Total charge wall species  6 -0.57381549    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -1.20933459443749867E-9
+ Melt charge 0.
+ Wall charge 1.84605527469994257E-3
+ Total charge 1.84605527469994257E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.397529782130299
+ Dispersion energy  0.
+ vqeng  -4.22432812954688652E-2
+ Short range energy  -12.320195348395359
+ Velocity convergence  3
+ 
+ Step 2*55
+ Done  33  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749994E-01
+  Total charge wall species  5  0.58032373    
+  Mean potential wall species  6 -0.36749996E-01
+  Total charge wall species  6 -0.57856307    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -8.89824058876982197E-10
+ Melt charge 0.
+ Wall charge 1.76065704654090882E-3
+ Total charge 1.76065704654090882E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.401015481659201
+ Dispersion energy  0.
+ vqeng  -4.25890896439303362E-2
+ Short range energy  -12.325729364209018
+ Velocity convergence  3
+ 
+ Step 2*56
+ Done  33  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750002E-01
+  Total charge wall species  5  0.58502967    
+  Mean potential wall species  6 -0.36750003E-01
+  Total charge wall species  6 -0.58335633    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -3.62941122011776057E-10
+ Melt charge 0.
+ Wall charge 1.67334012558234546E-3
+ Total charge 1.67334012558234546E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.404638474680624
+ Dispersion energy  0.
+ vqeng  -4.29381857942606471E-2
+ Short range energy  -12.330301663975657
+ Velocity convergence  3
+ 
+ Step 2*57
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36750004E-01
+  Total charge wall species  5  0.58977961    
+  Mean potential wall species  6 -0.36750002E-01
+  Total charge wall species  6 -0.58819291    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 6.93405895198941178E-10
+ Melt charge 0.
+ Wall charge 1.58669607633021847E-3
+ Total charge 1.58669607633021847E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.408384286058549
+ Dispersion energy  0.
+ vqeng  -4.32904901213010881E-2
+ Short range energy  -12.333955660474428
+ Velocity convergence  3
+ 
+ Step 2*58
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36749996E-01
+  Total charge wall species  5  0.59456495    
+  Mean potential wall species  6 -0.36749995E-01
+  Total charge wall species  6 -0.59306644    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 4.52970676159957592E-10
+ Melt charge 0.
+ Wall charge 1.4985040972106678E-3
+ Total charge 1.4985040972106678E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.41224927286396
+ Dispersion energy  0.
+ vqeng  -4.36454535478610003E-2
+ Short range energy  -12.336748050319454
+ Velocity convergence  3
+ 
+ Step 2*59
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36750003E-01
+  Total charge wall species  5  0.59939183    
+  Mean potential wall species  6 -0.36750000E-01
+  Total charge wall species  6 -0.59798039    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.53228007671512015E-9
+ Melt charge 0.
+ Wall charge 1.41144901458012395E-3
+ Total charge 1.41144901458012395E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.416223050989956
+ Dispersion energy  0.
+ vqeng  -4.40034290674880812E-2
+ Short range energy  -12.338684819010325
+ Velocity convergence  3
+ 
+ Step 2*60
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36750002E-01
+  Total charge wall species  5  0.60425150    
+  Mean potential wall species  6 -0.36750001E-01
+  Total charge wall species  6 -0.60292818    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 4.32477367487875081E-10
+ Melt charge 0.
+ Wall charge 1.32332759256578725E-3
+ Total charge 1.32332759256578725E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.42030821562912
+ Dispersion energy  0.
+ vqeng  -4.43638532897740467E-2
+ Short range energy  -12.339836613010844
+ Velocity convergence  3
+ 
+ Step 2*61
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749995E-01
+  Total charge wall species  5  0.60914561    
+  Mean potential wall species  6 -0.36749990E-01
+  Total charge wall species  6 -0.60790784    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 2.49018394249653278E-9
+ Melt charge 0.
+ Wall charge 1.23776736997030512E-3
+ Total charge 1.23776736997030512E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.424495942445809
+ Dispersion energy  0.
+ vqeng  -4.47267141865822226E-2
+ Short range energy  -12.340240705466261
+ Velocity convergence  3
+ 
+ Step 2*62
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 13  steps
+  Mean potential wall species  5  0.36749922E-01
+  Total charge wall species  5  0.61407217    
+  Mean potential wall species  6 -0.36749892E-01
+  Total charge wall species  6 -0.61292170    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.43234847694081603E-8
+ Melt charge 0.
+ Wall charge 1.15046848559380299E-3
+ Total charge 1.15046848559380299E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.428779543544593
+ Dispersion energy  0.
+ vqeng  -4.50920246005775821E-2
+ Short range energy  -12.339935362980977
+ Velocity convergence  3
+ 
+ Step 2*63
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36750005E-01
+  Total charge wall species  5  0.61903007    
+  Mean potential wall species  6 -0.36750001E-01
+  Total charge wall species  6 -0.61796362    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.83491752840070322E-9
+ Melt charge 0.
+ Wall charge 1.06644950892700874E-3
+ Total charge 1.06644950892700874E-3
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.433156924056718
+ Dispersion energy  0.
+ vqeng  -4.54595183563607994E-2
+ Short range energy  -12.338969206380291
+ Velocity convergence  3
+ 
+ Step 2*64
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749992E-01
+  Total charge wall species  5  0.62401185    
+  Mean potential wall species  6 -0.36749998E-01
+  Total charge wall species  6 -0.62303191    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -2.89625194926826197E-9
+ Melt charge 0.
+ Wall charge 9.79932518248793905E-4
+ Total charge 9.79932518248793905E-4
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.437610208234474
+ Dispersion energy  0.
+ vqeng  -4.5828858191251591E-2
+ Short range energy  -12.337392926860486
+ Velocity convergence  3
+ 
+ Step 2*65
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 16  steps
+  Mean potential wall species  5  0.36749995E-01
+  Total charge wall species  5  0.62902317    
+  Mean potential wall species  6 -0.36750003E-01
+  Total charge wall species  6 -0.62812603    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -3.65500767634374938E-9
+ Melt charge 0.
+ Wall charge 8.97135821267880385E-4
+ Total charge 8.97135821267880385E-4
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.442133719206538
+ Dispersion energy  0.
+ vqeng  -4.62002331832886901E-2
+ Short range energy  -12.335237278289688
+ Velocity convergence  3
+ 
+ Step 2*66
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 16  steps
+  Mean potential wall species  5  0.36750008E-01
+  Total charge wall species  5  0.63406174    
+  Mean potential wall species  6 -0.36750006E-01
+  Total charge wall species  6 -0.63324284    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 8.38197803493603399E-10
+ Melt charge 0.
+ Wall charge 8.18896493689880156E-4
+ Total charge 8.18896493689880156E-4
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.446735962840911
+ Dispersion energy  0.
+ vqeng  -4.65734431179895964E-2
+ Short range energy  -12.332544228795012
+ Velocity convergence  3
+ 
+ Step 2*67
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36749996E-01
+  Total charge wall species  5  0.63911680    
+  Mean potential wall species  6 -0.36749994E-01
+  Total charge wall species  6 -0.63837685    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 8.88985013813312084E-10
+ Melt charge 0.
+ Wall charge 7.39957623753895177E-4
+ Total charge 7.39957623753895177E-4
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.451411929017524
+ Dispersion energy  0.
+ vqeng  -4.69478915886971174E-2
+ Short range energy  -12.329328055445673
+ Velocity convergence  3
+ 
+ Step 2*68
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36750004E-01
+  Total charge wall species  5  0.64419685    
+  Mean potential wall species  6 -0.36750004E-01
+  Total charge wall species  6 -0.64353423    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.73126203204067512E-10
+ Melt charge 0.
+ Wall charge 6.6261742697604209E-4
+ Total charge 6.6261742697604209E-4
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.456136163545331
+ Dispersion energy  0.
+ vqeng  -4.73241170186962934E-2
+ Short range energy  -12.325627385108291
+ Velocity convergence  3
+ 
+ Step 2*69
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749992E-01
+  Total charge wall species  5  0.64929269    
+  Mean potential wall species  6 -0.36750008E-01
+  Total charge wall species  6 -0.64870599    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -7.87249933804337438E-9
+ Melt charge 0.
+ Wall charge 5.86699903127041456E-4
+ Total charge 5.86699903127041456E-4
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.460918779393097
+ Dispersion energy  0.
+ vqeng  -4.77014513431193027E-2
+ Short range energy  -12.321470154548297
+ Velocity convergence  3
+ 
+ Step 2*70
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750004E-01
+  Total charge wall species  5  0.65440687    
+  Mean potential wall species  6 -0.36749988E-01
+  Total charge wall species  6 -0.65388892    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 7.5757447075833743E-9
+ Melt charge 0.
+ Wall charge 5.17959451585447983E-4
+ Total charge 5.17959451585447983E-4
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.465751836200113
+ Dispersion energy  0.
+ vqeng  -4.80798702751203538E-2
+ Short range energy  -12.316870920267085
+ Velocity convergence  3
+ 
+ Step 2*71
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36750007E-01
+  Total charge wall species  5  0.65953765    
+  Mean potential wall species  6 -0.36750004E-01
+  Total charge wall species  6 -0.65908992    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.26154972021512987E-9
+ Melt charge 0.
+ Wall charge 4.47734628826745862E-4
+ Total charge 4.47734628826745862E-4
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.470628550725777
+ Dispersion energy  0.
+ vqeng  -4.84595632244064142E-2
+ Short range energy  -12.311846526995065
+ Velocity convergence  3
+ 
+ Step 2*72
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750004E-01
+  Total charge wall species  5  0.66467971    
+  Mean potential wall species  6 -0.36749999E-01
+  Total charge wall species  6 -0.66429825    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 2.46185167868817403E-9
+ Melt charge 0.
+ Wall charge 3.81466893451004596E-4
+ Total charge 3.81466893451004596E-4
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.475551748207096
+ Dispersion energy  0.
+ vqeng  -4.88399399436562007E-2
+ Short range energy  -12.306413964859404
+ Velocity convergence  3
+ 
+ Step 2*73
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 16  steps
+  Mean potential wall species  5  0.36749997E-01
+  Total charge wall species  5  0.66983135    
+  Mean potential wall species  6 -0.36749999E-01
+  Total charge wall species  6 -0.66951468    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -7.45605476456440043E-10
+ Melt charge 0.
+ Wall charge 3.16678788784052756E-4
+ Total charge 3.16678788784052756E-4
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.480505795987149
+ Dispersion energy  0.
+ vqeng  -4.92209666014845476E-2
+ Short range energy  -12.300604230822803
+ Velocity convergence  3
+ 
+ Step 2*74
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 16  steps
+  Mean potential wall species  5  0.36750003E-01
+  Total charge wall species  5  0.67499534    
+  Mean potential wall species  6 -0.36750000E-01
+  Total charge wall species  6 -0.67473820    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.11189421924609348E-9
+ Melt charge 0.
+ Wall charge 2.57134148846788202E-4
+ Total charge 2.57134148846788202E-4
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.485487118564876
+ Dispersion energy  0.
+ vqeng  -4.96027076320411167E-2
+ Short range energy  -12.294433463975523
+ Velocity convergence  3
+ 
+ Step 2*75
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36749997E-01
+  Total charge wall species  5  0.68016500    
+  Mean potential wall species  6 -0.36749995E-01
+  Total charge wall species  6 -0.67996535    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 8.29459543109769865E-10
+ Melt charge 0.
+ Wall charge 1.99646907899170278E-4
+ Total charge 1.99646907899170278E-4
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.490492115678322
+ Dispersion energy  0.
+ vqeng  -4.99847903713377048E-2
+ Short range energy  -12.287894728379676
+ Velocity convergence  3
+ 
+ Step 2*76
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749990E-01
+  Total charge wall species  5  0.68534026    
+  Mean potential wall species  6 -0.36749995E-01
+  Total charge wall species  6 -0.68519648    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -2.38297048155630202E-9
+ Melt charge 0.
+ Wall charge 1.43783219614362912E-4
+ Total charge 1.43783219614362912E-4
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.49551971382779
+ Dispersion energy  0.
+ vqeng  -5.03672250151005613E-2
+ Short range energy  -12.28104324950116
+ Velocity convergence  3
+ 
+ Step 2*77
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749951E-01
+  Total charge wall species  5  0.69052290    
+  Mean potential wall species  6 -0.36749949E-01
+  Total charge wall species  6 -0.69042829    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.17553562468955881E-9
+ Melt charge 0.
+ Wall charge 9.46148066278962308E-5
+ Total charge 9.46148066278962308E-5
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.500554842944027
+ Dispersion energy  0.
+ vqeng  -5.07499560566798333E-2
+ Short range energy  -12.273862976393636
+ Velocity convergence  3
+ 
+ Step 2*78
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749995E-01
+  Total charge wall species  5  0.69570307    
+  Mean potential wall species  6 -0.36749996E-01
+  Total charge wall species  6 -0.69565683    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -3.17770608454244444E-10
+ Melt charge 0.
+ Wall charge 4.62447980764391087E-5
+ Total charge 4.62447980764391087E-5
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.505615205475706
+ Dispersion energy  0.
+ vqeng  -5.11324764921771147E-2
+ Short range energy  -12.266389161471388
+ Velocity convergence  3
+ 
+ Step 2*79
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 16  steps
+  Mean potential wall species  5  0.36749997E-01
+  Total charge wall species  5  0.70088756    
+  Mean potential wall species  6 -0.36749996E-01
+  Total charge wall species  6 -0.70088542    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 7.24736730720704201E-10
+ Melt charge 0.
+ Wall charge 2.14089077077428414E-6
+ Total charge 2.14089077077428414E-6
+ Umetal  0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.510664230313481
+ Dispersion energy  0.
+ vqeng  -5.15151571661217889E-2
+ Short range energy  -12.258639598637256
+ Velocity convergence  3
+ 
+ Step 2*80
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36749995E-01
+  Total charge wall species  5  0.70606812    
+  Mean potential wall species  6 -0.36749992E-01
+  Total charge wall species  6 -0.70610713    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.19519630373593831E-9
+ Melt charge 0.
+ Wall charge -3.90082333590058283E-5
+ Total charge -3.90082333590058283E-5
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.515720405159897
+ Dispersion energy  0.
+ vqeng  -5.18974402617740291E-2
+ Short range energy  -12.250625264955266
+ Velocity convergence  3
+ 
+ Step 2*81
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750003E-01
+  Total charge wall species  5  0.71124920    
+  Mean potential wall species  6 -0.36750006E-01
+  Total charge wall species  6 -0.71132731    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -1.48079773228721531E-9
+ Melt charge 0.
+ Wall charge -7.8112200950664068E-5
+ Total charge -7.8112200950664068E-5
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.520765353420018
+ Dispersion energy  0.
+ vqeng  -5.22796864884064669E-2
+ Short range energy  -12.242386225006904
+ Velocity convergence  3
+ 
+ Step 2*82
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 16  steps
+  Mean potential wall species  5  0.36750003E-01
+  Total charge wall species  5  0.71642318    
+  Mean potential wall species  6 -0.36749999E-01
+  Total charge wall species  6 -0.71653498    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.55521614663839501E-9
+ Melt charge 0.
+ Wall charge -1.11804042215307708E-4
+ Total charge -1.11804042215307708E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.525803496298622
+ Dispersion energy  0.
+ vqeng  -5.26612123353372499E-2
+ Short range energy  -12.233936490761449
+ Velocity convergence  3
+ 
+ Step 2*83
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36750005E-01
+  Total charge wall species  5  0.72159253    
+  Mean potential wall species  6 -0.36750004E-01
+  Total charge wall species  6 -0.72173675    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 3.72766376459926765E-10
+ Melt charge 0.
+ Wall charge -1.44220981238285528E-4
+ Total charge -1.44220981238285528E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.53083490619025
+ Dispersion energy  0.
+ vqeng  -5.30423509712046673E-2
+ Short range energy  -12.225310904806662
+ Velocity convergence  3
+ 
+ Step 2*84
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750002E-01
+  Total charge wall species  5  0.72675148    
+  Mean potential wall species  6 -0.36749997E-01
+  Total charge wall species  6 -0.72692403    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 2.50528048424150996E-9
+ Melt charge 0.
+ Wall charge -1.72548681679818294E-4
+ Total charge -1.72548681679818294E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.53583635499777
+ Dispersion energy  0.
+ vqeng  -5.34225750039954289E-2
+ Short range energy  -12.216543240973015
+ Velocity convergence  3
+ 
+ Step 2*85
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750000E-01
+  Total charge wall species  5  0.73190286    
+  Mean potential wall species  6 -0.36749998E-01
+  Total charge wall species  6 -0.73210286    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 7.82082549468761696E-10
+ Melt charge 0.
+ Wall charge -1.99999107357434758E-4
+ Total charge -1.99999107357434758E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.540802020312356
+ Dispersion energy  0.
+ vqeng  -5.38022099604873877E-2
+ Short range energy  -12.207641661331451
+ Velocity convergence  3
+ 
+ Step 2*86
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750000E-01
+  Total charge wall species  5  0.73704329    
+  Mean potential wall species  6 -0.36749995E-01
+  Total charge wall species  6 -0.73726547    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 2.24212343208579122E-9
+ Melt charge 0.
+ Wall charge -2.22176377950467074E-4
+ Total charge -2.22176377950467074E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.54574289129603
+ Dispersion energy  0.
+ vqeng  -5.41808468580657135E-2
+ Short range energy  -12.198656903281716
+ Velocity convergence  3
+ 
+ Step 2*87
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750000E-01
+  Total charge wall species  5  0.74217285    
+  Mean potential wall species  6 -0.36750002E-01
+  Total charge wall species  6 -0.74241769    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -7.50548246395257856E-10
+ Melt charge 0.
+ Wall charge -2.44836366884410017E-4
+ Total charge -2.44836366884410017E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.550657433936124
+ Dispersion energy  0.
+ vqeng  -5.45587023095013696E-2
+ Short range energy  -12.18960038102815
+ Velocity convergence  3
+ 
+ Step 2*88
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36749993E-01
+  Total charge wall species  5  0.74728571    
+  Mean potential wall species  6 -0.36749995E-01
+  Total charge wall species  6 -0.74754974    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -1.14177965876765009E-9
+ Melt charge 0.
+ Wall charge -2.64032235178512931E-4
+ Total charge -2.64032235178512931E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.555528536964005
+ Dispersion energy  0.
+ vqeng  -5.49352025436484551E-2
+ Short range energy  -12.180510289232529
+ Velocity convergence  3
+ 
+ Step 2*89
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 16  steps
+  Mean potential wall species  5  0.36749992E-01
+  Total charge wall species  5  0.75238621    
+  Mean potential wall species  6 -0.36749995E-01
+  Total charge wall species  6 -0.75266701    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -1.41207627784864542E-9
+ Melt charge 0.
+ Wall charge -2.80793138000112741E-4
+ Total charge -2.80793138000112741E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.560346743450076
+ Dispersion energy  0.
+ vqeng  -5.53107057350394893E-2
+ Short range energy  -12.171413722134034
+ Velocity convergence  3
+ 
+ Step 2*90
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749992E-01
+  Total charge wall species  5  0.75746968    
+  Mean potential wall species  6 -0.36749995E-01
+  Total charge wall species  6 -0.75776508    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -1.19292646788494645E-9
+ Melt charge 0.
+ Wall charge -2.95397380398576548E-4
+ Total charge -2.95397380398576548E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.565122865931876
+ Dispersion energy  0.
+ vqeng  -5.56848774213626191E-2
+ Short range energy  -12.162345911083088
+ Velocity convergence  3
+ 
+ Step 2*91
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749999E-01
+  Total charge wall species  5  0.76253890    
+  Mean potential wall species  6 -0.36750003E-01
+  Total charge wall species  6 -0.76284657    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -1.91907345226792403E-9
+ Melt charge 0.
+ Wall charge -3.0766680712335237E-4
+ Total charge -3.0766680712335237E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.569842275247652
+ Dispersion energy  0.
+ vqeng  -5.60579158153389906E-2
+ Short range energy  -12.153339228140602
+ Velocity convergence  3
+ 
+ Step 2*92
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749999E-01
+  Total charge wall species  5  0.76758709    
+  Mean potential wall species  6 -0.36750004E-01
+  Total charge wall species  6 -0.76790674    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -2.10582252265804205E-9
+ Melt charge 0.
+ Wall charge -3.19645487949771212E-4
+ Total charge -3.19645487949771212E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.574512955722909
+ Dispersion energy  0.
+ vqeng  -5.6429398283939225E-2
+ Short range energy  -12.144411202806081
+ Velocity convergence  3
+ 
+ Step 2*93
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36750003E-01
+  Total charge wall species  5  0.77261743    
+  Mean potential wall species  6 -0.36750004E-01
+  Total charge wall species  6 -0.77294598    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -3.45980979363149925E-10
+ Melt charge 0.
+ Wall charge -3.28550170711844336E-4
+ Total charge -3.28550170711844336E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.57911878678587
+ Dispersion energy  0.
+ vqeng  -5.67994552823773702E-2
+ Short range energy  -12.135598711862944
+ Velocity convergence  3
+ 
+ Step 2*94
+ Done  34  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36750002E-01
+  Total charge wall species  5  0.77762446    
+  Mean potential wall species  6 -0.36750003E-01
+  Total charge wall species  6 -0.77796151    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -8.92869559476562221E-10
+ Melt charge 0.
+ Wall charge -3.37047286357167186E-4
+ Total charge -3.37047286357167186E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.583652875937489
+ Dispersion energy  0.
+ vqeng  -5.71677845688253611E-2
+ Short range energy  -12.126911088239181
+ Velocity convergence  3
+ 
+ Step 2*95
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 16  steps
+  Mean potential wall species  5  0.36749997E-01
+  Total charge wall species  5  0.78261087    
+  Mean potential wall species  6 -0.36749996E-01
+  Total charge wall species  6 -0.78295477    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.6405836875721022E-10
+ Melt charge 0.
+ Wall charge -3.43905621292911468E-4
+ Total charge -3.43905621292911468E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.588128891585399
+ Dispersion energy  0.
+ vqeng  -5.75345372934409835E-2
+ Short range energy  -12.118379999337471
+ Velocity convergence  3
+ 
+ Step 2*96
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 16  steps
+  Mean potential wall species  5  0.36749995E-01
+  Total charge wall species  5  0.78757412    
+  Mean potential wall species  6 -0.36749998E-01
+  Total charge wall species  6 -0.78792540    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -1.4414000258511366E-9
+ Melt charge 0.
+ Wall charge -3.51274482960961532E-4
+ Total charge -3.51274482960961532E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.592527915382007
+ Dispersion energy  0.
+ vqeng  -5.78996073978846684E-2
+ Short range energy  -12.1100356700336
+ Velocity convergence  3
+ 
+ Step 2*97
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36749996E-01
+  Total charge wall species  5  0.79251533    
+  Mean potential wall species  6 -0.36750001E-01
+  Total charge wall species  6 -0.79287223    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -2.11119604779452958E-9
+ Melt charge 0.
+ Wall charge -3.56902236261086303E-4
+ Total charge -3.56902236261086303E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.596852525786517
+ Dispersion energy  0.
+ vqeng  -5.82629928942964143E-2
+ Short range energy  -12.101892970052791
+ Velocity convergence  3
+ 
+ Step 2*98
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749998E-01
+  Total charge wall species  5  0.79743162    
+  Mean potential wall species  6 -0.36749998E-01
+  Total charge wall species  6 -0.79779279    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 5.60901467019850018E-11
+ Melt charge 0.
+ Wall charge -3.6117007070674001E-4
+ Total charge -3.6117007070674001E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.601100442188098
+ Dispersion energy  0.
+ vqeng  -5.8624496921808579E-2
+ Short range energy  -12.09395815633923
+ Velocity convergence  3
+ 
+ Step 2*99
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 15  steps
+  Mean potential wall species  5  0.36749998E-01
+  Total charge wall species  5  0.80232192    
+  Mean potential wall species  6 -0.36749998E-01
+  Total charge wall species  6 -0.80268822    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar -3.71951665557907749E-10
+ Melt charge 0.
+ Wall charge -3.66297796756731575E-4
+ Total charge -3.66297796756731575E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.605268964703576
+ Dispersion energy  0.
+ vqeng  -5.8984122911721934E-2
+ Short range energy  -12.086250870765673
+ Velocity convergence  3
+ 
+ Step 2*100
+ Done  35  rattle iterations -1st part
+ Only the two first species are considered electrode species
+ which corresponds to  7642  atoms
+ Wall charge converged in 14  steps
+  Mean potential wall species  5  0.36749994E-01
+  Total charge wall species  5  0.80718509    
+  Mean potential wall species  6 -0.36749992E-01
+  Total charge wall species  6 -0.80755502    
+  Mean potential wall species  7   0.0000000    
+  Total charge wall species  7   0.0000000    
+ Mean wall ion potential vbar 1.13961354155527802E-9
+ Melt charge 0.
+ Wall charge -3.69928185936035936E-4
+ Total charge -3.69928185936035936E-4
+ Umetal  -0.
+ 
+ **** Wall charge annealing completed ****
+ 
+ Coulomb energy -60.609354258565467
+ Dispersion energy  0.
+ vqeng  -5.93416991692051476E-2
+ Short range energy  -12.078775687986095
+ Velocity convergence  3
+ **** Dumped pot, elefld and density ****
+ 
+ **** Radial distribution function written out ****
+ 
+ Total time taken: 346.03175592422485
+ Excluding IO: 345.29566287994385
+ Excluding also the initialization step: 309.82728910446167
+ Bye Bye

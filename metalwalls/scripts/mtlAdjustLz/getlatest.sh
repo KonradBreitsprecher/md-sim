@@ -1,0 +1,25 @@
+tail -n 1 `ls -t  ~/data/EQUI/298K_0ACN_0V/8/testout.rst* | head -1`  
+tail -n 1 `ls -t  ~/data/EQUI/298K_0ACN_1V/8/testout.rst* | head -1` 
+tail -n 1 `ls -t  ~/data/EQUI/298K_0ACN_2V/7/testout.rst* | head -1`
+tail -n 1 `ls -t ~/data/EQUI/298K_10ACN_0V/8/testout.rst* | head -1`
+tail -n 1 `ls -t ~/data/EQUI/298K_10ACN_1V/8/testout.rst* | head -1`
+tail -n 1 `ls -t ~/data/EQUI/298K_10ACN_2V/8/testout.rst* | head -1`
+tail -n 1 `ls -t ~/data/EQUI/298K_20ACN_0V/9/testout.rst* | head -1`
+tail -n 1 `ls -t ~/data/EQUI/298K_20ACN_1V/9/testout.rst* | head -1`
+tail -n 1 `ls -t ~/data/EQUI/298K_20ACN_2V/7/testout.rst* | head -1`
+tail -n 1 `ls -t ~/data/EQUI/298K_40ACN_0V/7/testout.rst* | head -1`
+tail -n 1 `ls -t ~/data/EQUI/298K_40ACN_1V/8/testout.rst* | head -1`
+tail -n 1 `ls -t ~/data/EQUI/298K_40ACN_2V/8/testout.rst* | head -1`
+tail -n 1 `ls -t  ~/data/EQUI/340K_0ACN_0V/8/testout.rst* | head -1`
+tail -n 1 `ls -t  ~/data/EQUI/340K_0ACN_1V/8/testout.rst* | head -1`
+tail -n 1 `ls -t  ~/data/EQUI/340K_0ACN_2V/8/testout.rst* | head -1`
+tail -n 1 `ls -t ~/data/EQUI/340K_10ACN_0V/8/testout.rst* | head -1`
+tail -n 1 `ls -t ~/data/EQUI/340K_10ACN_1V/8/testout.rst* | head -1`
+tail -n 1 `ls -t ~/data/EQUI/340K_10ACN_2V/8/testout.rst* | head -1`
+tail -n 1 `ls -t ~/data/EQUI/340K_20ACN_0V/8/testout.rst* | head -1`
+tail -n 1 `ls -t ~/data/EQUI/340K_20ACN_1V/6/testout.rst* | head -1`
+tail -n 1 `ls -t ~/data/EQUI/340K_20ACN_2V/8/testout.rst* | head -1`
+tail -n 1 `ls -t ~/data/EQUI/340K_40ACN_0V/6/testout.rst* | head -1`
+tail -n 1 `ls -t ~/data/EQUI/340K_40ACN_1V/6/testout.rst* | head -1`
+tail -n 1 `ls -t ~/data/EQUI/340K_40ACN_2V/8/testout.rst* | head -1`
+

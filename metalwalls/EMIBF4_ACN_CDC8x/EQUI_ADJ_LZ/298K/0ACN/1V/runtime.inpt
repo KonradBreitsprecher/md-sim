@@ -1,0 +1,87 @@
+117704      Number of steps in the run.
+298.000     Translational temperature.
+1         Number of ionic molecular units.
+7           Number of species.
+1	    Number of anion species
+4	    Number of species allowed to move
+A		Name of species 1
+600		Number of species of type 1
+-0.78		Permanent charge on type 1 ions
+86.81		Atomic mass of type 1
+.false.		Polarizable ? 
+Im1          Name of Species 2
+600          Number of species of type 2.
+0.3591        Permanent charge on type 2 ions.
+67.07   Atomic mass of type 2.
+.false.      Polarizable ?
+Im2           Name of species 3
+600         Number of species of type 3.
+0.1888        Permanent charge on type 3 ions.
+15.04     Atomic mass of type 3.
+.false.      Polarizable ?
+Im3		Name of species 4
+600		Number of species 4
+0.2321		Permanent charge on type 4 ions
+29.07		Atomic mass of type 4
+.false.		Polarizable ?
+C1       Name of species 5
+3821          Number of species of type 5
+.true.      constant potential? (if .false. then constant charge)
+0.0184        wall potential (if previous line .false. then this is the charge)
+12.0     Atomic mass of type 5.
+C2       Name of species 6
+3821          Number of species of type 6
+.true.      constant potential? (if .false. then constant charge)
+-0.0184        wall potential (if previous line .false. then this is the charge)
+12.0     Atomic mass of type 6.
+P       Name of species 7
+400          Number of species of type 7
+.false.      constant potential? (if .false. then constant charge)
+0.000        wall potential (if previous line .false. then this is the charge)
+12.0     Atomic mass of type 7.
+5.0d-7   wall convergence parameter
+82.682d0      Timestep (a.u.).
+rim                    Type of run (rim,dippim,quadpim)
+epp                    Type of run (epp,cim,aim)
+.false.     Conjugate gradient minimisation?
+.true.      Restart ? 
+.false.     Set up velocities?
+.false.     Velocity rescale prior to main run ?
+.false.     Random displacement of ions.
+.true.      Move ions?
+.false.     Do a dynamical matrix calculation?
+.false.     Relax input structure?
+.false.     COM reset?.false..false..true.200
+1000         Number of steps inbetween periodic output (energies).
+500      Number of steps inbetween periodic output (velocities etc).
+1000        Number of steps inbetween periodic output (frictions etc).
+1000       Number of steps inbetween periodic output (pressure etc).
+1000         Number of steps inbetween periodic output (restart file).
+1000		Number of steps between forces output
+1000		Number of steps between wall forces output
+500	    Number of bins
+50000000           Number of steps inbetween rdf call in main loop.
+1           Number of ions to monitor.
+1           Ion number to monitor. (1)
+5.6000d0      eta = <x>/boxlen.
+41.2d0      rcut (au).
+1.0d-7      convergence parameter.
+1.0d0       ewald convergence parameter
+41.2d0      rcut short-range
+1.0d0       hfac
+1.0         skmaxz
+1.0         sdh
+.true.      Nose-Hoover thermostat? (if true then enter a relaxation time) 
+5000
+.true.      Periodic rescale of temperature? 50
+10
+.false.     Periodic re-annealing?
+.false.      Isotropic barostat? 10000.d0 0.0d0
+.false.     Anisotropic barostat?
+.true.     Orthorhombic cell?
+.false.     EFG calc. ?
+1000        nbin
+.true.     Dump msd displacements? (if true one more line) 
+10000         msdcalltime
+shaketol 1e-8
+maxshakeiter 100
