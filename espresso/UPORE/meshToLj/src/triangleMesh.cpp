@@ -3,9 +3,6 @@
 
 #define COPYARRAY(dest, src) memcpy((dest), (src), sizeof((src)))
 
-//Structs
-
-
 //Helpers
 long triangleMesh::getNumFaces(char* pathToMeshfile)
 {
