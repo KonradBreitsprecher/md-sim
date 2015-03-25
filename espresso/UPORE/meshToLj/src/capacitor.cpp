@@ -1,4 +1,4 @@
-#include "capacitor.h"
+#include "capacitor.hpp"
 
 //Electrode geometries
 electrode* _electrodes;

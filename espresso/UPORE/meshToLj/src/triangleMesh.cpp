@@ -1,10 +1,10 @@
-#include "triangleMesh.h"
-#include "myHelpers.h"
+#include "triangleMesh.hpp"
+#include "myHelpers.hpp"
 
 #define COPYARRAY(dest, src) memcpy((dest), (src), sizeof((src)))
 
 //Helpers
-long triangleMesh::getNumFaces(char* pathToMeshfile)
+long triangleMesh::getNumFaces(std::string pathToMeshfile)
 {
     std::ifstream inFile(pathToMeshfile);
     std::string line;
@@ -149,7 +149,7 @@ double triangleMesh::distToTriangle(int i, double P[3],double minDist)
 }
 
 //Constructor
-triangleMesh::triangleMesh(char* pathToMeshfile)
+triangleMesh::triangleMesh(std::string pathToMeshfile)
 {
 
     _numFaces = getNumFaces(pathToMeshfile);

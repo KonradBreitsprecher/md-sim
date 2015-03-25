@@ -1,13 +1,11 @@
 prog: main.o capacitor.o triangleMesh.o
-	g++ -o CreateVolumeData main.o capacitor.o triangleMesh.o 
-main.o: main.cpp
-	gcc -c main.cpp -I./include
-
-
+	g++ -std=c++11 -o CreateVolumeData main.o capacitor.o triangleMesh.o 
 capacitor.o: src/capacitor.cpp
-	gcc -c src/capacitor.cpp -I./include
-
+	gcc -std=c++11 -c src/capacitor.cpp -I./include
 				
 triangleMesh.o: src/triangleMesh.cpp
-	gcc -c src/triangleMesh.cpp -I./include
+	gcc -std=c++11 -c src/triangleMesh.cpp -I./include
+
+main.o: main.cpp
+	gcc -std=c++11 -stdlib=libc++ -c main.cpp -I./include
 

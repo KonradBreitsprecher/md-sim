@@ -1,7 +1,7 @@
 #ifndef CAPACITOR_H
 #define CAPACITOR_H
 
-#include "triangleMesh.h"
+#include "triangleMesh.hpp"
 
 #include <iostream>
 #include <string>
@@ -15,7 +15,8 @@
 class electrode : public triangleMesh
 {
     public:
-        electrode(char* pathToMeshfile, double potential) : triangleMesh(pathToMeshfile) { pot = potential;};
+        electrode();
+        electrode(std::string pathToMeshfile, double potential) : triangleMesh(pathToMeshfile) { pot = potential;};
         double pot;
     protected:
     private:

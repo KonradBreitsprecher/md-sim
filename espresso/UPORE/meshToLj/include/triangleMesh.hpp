@@ -1,3 +1,5 @@
+#include <string>
+
 #ifndef TRIANGLEMESH_H
 #define TRIANGLEMESH_H
 
@@ -17,13 +19,13 @@ class triangle
 class triangleMesh
 {
     public:
-        triangleMesh(char* pathToMeshfile);
+        triangleMesh(std::string pathToMeshfile);
         double distToMesh(double P[3]);
     protected:
     private:
         triangle* _triangles;
         long _numFaces = 0;
-        long getNumFaces(char* pathToMeshfile);
+        long getNumFaces(std::string pathToMeshfile);
         void transformPoint(int i, double P[3], double pt[3]);
         void transformPoint2D(int i, double P[3], double pt2D[2]);
         double edgeEquation(int i, int j, double p[2]);
