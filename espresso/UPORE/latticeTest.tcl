@@ -1,4 +1,3 @@
-
 set box_l_x 4
 set box_l_y 4
 set box_l_z 4
@@ -10,6 +9,8 @@ setmd time_step 0.005
 setmd skin 2
 thermostat off
 
+cellsystem domain_decomposition -no_verlet_list
+
 part 0 pos [expr 0.5*$box_l_x] [expr 0.5*$box_l_y] [expr 0] q 1 fix 1 1 1 type 0
 part 1 pos 0 0 0 q -1 fix 1 1 1 type 0
 
@@ -17,8 +18,8 @@ puts "Load External Potential"
 external_potential tabulated file "simpleLattice.dat" scale [list 1]
 
 
-for { set i 0 } { $i < 1000 } { incr i } {
-  set z [expr $box_l_z*$i/1000]
+for { set i 0 } { $i < 100 } { incr i } {
+  set z [expr $box_l_z*$i/100.0]
   part 0 pos [expr 0.5*$box_l_x] [expr 0.5*$box_l_y] $z
   integrate 1
   imd positions

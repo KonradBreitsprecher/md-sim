@@ -17,7 +17,7 @@ setmd skin $skin
 set temperature 0.1
 set gamma 1
 thermostat langevin $temperature $gamma
-
+cellsystem domain_decomposition -no_verlet_list
 
 ## Lets set up the geometry that we want at the end
 ## Unit of length is nanometer
@@ -166,10 +166,10 @@ while { $currentsigma < $maxsigma } {
     integrate 10
     # We integrate until the temperature is OK, so that the Langevin thermostat
     # removes the heat.
-    while {  [ expr [ analyze energy kinetic ] /3/$n_ion_pairs ] > [expr $temperature*1.01] } {
-        puts "LJ warmup: T = [ expr [ analyze energy kinetic ] /3/$n_ion_pairs ]" 
-        integrate 10
-    }
+#while {  [ expr [ analyze energy kinetic ] /3/$n_ion_pairs ] > [expr $temperature*1.01] } {
+#       puts "LJ warmup: T = [ expr [ analyze energy kinetic ] /3/$n_ion_pairs ]" 
+#       integrate 10
+#   }
     set currentsigma [ expr $currentsigma * 1.05 ]
     set currenttime_step [ expr $currenttime_step * 1.05 ]
 }
@@ -185,7 +185,7 @@ setmd time_step $time_step
 
 puts "Tune P3M, init ICC"
 
-if {1==0} {
+if {1==1} {
 
 	#set d  [expr $wall_sigma*0.5]
 	set d  [expr $wall_sigma*0]
@@ -200,12 +200,12 @@ if {1==0} {
 
 
 
-	puts [ inter coulomb $l_B p3m tunev2 accuracy 1e-2 ]
+	puts [ inter coulomb $l_B p3m tunev2 accuracy 1e-3 ]
 
 	iccp3m $n_induced_charges epsilons $icc_epsilons normals $icc_normals areas $icc_areas sigmas $icc_sigmas relax 0.7 max_iterations 50 convergence 0.01 first_id [ expr 2*$n_ion_pairs ]
 }
 
-puts [ inter coulomb $l_B p3m tunev2 accuracy 1e-3 ]
+#puts [ inter coulomb $l_B p3m tunev2 accuracy 1e-3 ]
 
 #SimBoxParticles
 set ds 0.1
@@ -225,7 +225,7 @@ part [setmd n_part] pos $bx $by $bz fix 1 1 1 type 5
 
 
 
-set vmd_output "yes"
+set vmd_output "no"
 if { $vmd_output == "yes" } {
   prepare_vmd_connection "test" 10000 
   after 1000
@@ -291,7 +291,7 @@ external_potential tabulated file "mesh.dat" scale $scale
 for { set i 0 } { $i < 1000000 } { incr i } {
   integrate 10
   imd positions
-  puts "temperature is [ expr [ analyze energy kinetic ] /3/$n_ion_pairs ]" 
+#puts "temperature is [ expr [ analyze energy kinetic ] /3/$n_ion_pairs ]" 
   puts "ICC needed [ iccp3m no_iterations ] iterations in the last step"
 }
 

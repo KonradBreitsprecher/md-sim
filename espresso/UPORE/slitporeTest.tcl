@@ -18,7 +18,8 @@ set box_l_z [expr $pore_length + $channel_width + $gap]
 
 puts "Box: $box_l_x $box_l_y $box_l_z"
 
-setmd box_l $box_l_x $box_l_y $box_l_z
+#setmd box_l $box_l_x $box_l_y $box_l_z
+setmd box_l 7.212121212 7.14 23.13131313131
 setmd time_step 0.005 
 setmd skin 0.5
 thermostat langevin 1 1 
@@ -45,7 +46,7 @@ for { set i 0 } { $i < 1000 } { incr i } {
   part 0 pos [expr 0.5*$box_l_x] [expr 0.5*$box_l_y] $z
   integrate 1
   imd positions
-  #puts "z: $z   F: [part 0 print f]"
+  puts "z: $z   F: [part 0 print f]"
 }
 
  
