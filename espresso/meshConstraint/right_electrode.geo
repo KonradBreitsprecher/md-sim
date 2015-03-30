@@ -1,10 +1,13 @@
 //Parameters
-r = 2;  //Pore radius
-d = 3; //Pore depth
-e1 = 1; //Edge radius pore exit
-e2 = 1; //Edge radius pore floor
-b = 10; //Embedded plane edge length
-sx = 0; sy = 0; sz = 0;  //Global shift
+flip = -1;
+r = flip*2;  //Pore radius
+d = flip*3; //Pore depth
+e1 = flip*1; //Edge radius pore exit
+e2 = flip*1; //Edge radius pore floor
+b = flip*10; //Embedded plane edge length
+
+sx = 0; sy = 0; sz = 20;  //Global shift
+//Change mesh refinement with 'gmsh pore.geo -clscale 1'
 
 //Create line shape
 Point(1) = {sx + 0, sy + 0, sz + 0, 1.0};
@@ -50,8 +53,6 @@ Line Loop(69) = {65, 66, 67, 68};
 Line Loop(70) = {48, 63, 18, 33};
 Plane Surface(71) = {69, 70};
 
+Mesh 3;
 Mesh.Format = 27;
-Mesh 2;
-Save 'pore.stl';
-
-//Change mesh refinement with 'gmsh pore.geo -clscale 0.5 -algo front2d'
+Save 'pore2.msh';
