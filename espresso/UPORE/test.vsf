@@ -1,5 +1,0 @@
-pbc 7.140000000000001 7.140000000000001 22.09
-atom 1506:1513 radius 0.5 name Z type 5 q 0.0
-atom 0:752 radius 0.165 name N type 1 q 1.0
-atom 753:1505 radius 0.165 name S type 2 q -1.0
-

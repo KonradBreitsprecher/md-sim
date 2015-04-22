@@ -317,7 +317,7 @@ for {set i 0} {$i < $iccParticles} {incr i} {
     } else {
         set nz -1.0
     }
-    lappend icc_normals  [ list $nx $ny $nz ]
+    lappend icc_normals  { $nx $ny $nz }
     lappend icc_areas $icc_area
     lappend icc_sigmas $icc_sigma 
     lappend icc_epsilons $icc_eps

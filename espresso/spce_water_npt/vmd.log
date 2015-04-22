@@ -1,0 +1,14 @@
+# VMD for LINUXAMD64, version 1.9.1 (February 1, 2012)
+# Log file 'vmd.log', created by user konrad
+mol addrep 0
+display resetview
+mol new {vmd_startscript.vsf} type {vsf} first 0 last -1 step 1 waitfor -1
+animate style Loop
+mol modstyle 0 0 CPK 1.800000 0.300000 8.000000 6.000000
+mol modcolor 0 0 Name
+imd connect yak.icp.uni-stuttgart.de 10000
+imd transrate 1
+imd keep 1
+display resetview
+# VMD for LINUXAMD64, version 1.9.1 (February 1, 2012)
+# end of log file.
