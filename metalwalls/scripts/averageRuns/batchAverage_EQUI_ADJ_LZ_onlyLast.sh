@@ -1,0 +1,25 @@
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/298K_0ACN_0V/   7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_298K_0ACN_0V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/298K_0ACN_1V/   7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_298K_0ACN_1V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/298K_0ACN_2V/   7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_298K_0ACN_2V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/298K_10ACN_0V/  7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_298K_10ACN_0V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/298K_10ACN_1V/  7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_298K_10ACN_1V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/298K_10ACN_2V/  7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_298K_10ACN_2V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/298K_20ACN_0V/  7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_298K_20ACN_0V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/298K_20ACN_1V/  7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_298K_20ACN_1V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/298K_20ACN_2V/  7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_298K_20ACN_2V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/298K_40ACN_0V/  7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_298K_40ACN_0V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/298K_40ACN_1V/  7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_298K_40ACN_1V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/298K_40ACN_2V/  7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_298K_40ACN_2V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/340K_0ACN_0V/   7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_340K_0ACN_0V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/340K_0ACN_1V/   7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_340K_0ACN_1V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/340K_0ACN_2V/   7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_340K_0ACN_2V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/340K_10ACN_0V/  7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_340K_10ACN_0V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/340K_10ACN_1V/  7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_340K_10ACN_1V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/340K_10ACN_2V/  7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_340K_10ACN_2V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/340K_20ACN_0V/  7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_340K_20ACN_0V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/340K_20ACN_1V/  7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_340K_20ACN_1V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/340K_20ACN_2V/  7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_340K_20ACN_2V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/340K_40ACN_0V/  7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_340K_40ACN_0V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/340K_40ACN_1V/  7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_340K_40ACN_1V/
+python averageRuns.py ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/340K_40ACN_2V/  7 8 9 ~/simdata/CDC/data_hornet/EQUI_ADJ_LZ/AV_340K_40ACN_2V/
+
