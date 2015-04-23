@@ -5,7 +5,7 @@ d = 48; //Pore depth
 e1 = 2; //Edge radius pore exit
 e2 = 2; //Edge radius pore floor
 b = 40; //Embedded plane edge length
-gap = 30; //Gap between electrodes
+gap = 50; //Gap between electrodes
 sx = b/2; sy = b/2; sz = 0;  //Global shift
 
 //Create line shape

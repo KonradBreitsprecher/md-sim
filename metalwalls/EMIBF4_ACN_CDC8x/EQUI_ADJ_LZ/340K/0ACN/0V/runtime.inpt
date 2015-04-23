@@ -71,10 +71,9 @@ epp                    Type of run (epp,cim,aim)
 1.0d0       hfac
 1.0         skmaxz
 1.0         sdh
-.true.      Nose-Hoover thermostat? (if true then enter a relaxation time) 
-5000
-.true.      Periodic rescale of temperature? 50
-10
+.false.      Nose-Hoover thermostat? (if true then enter a relaxation time) 5000
+.true.      Periodic rescale of temperature?
+100
 .false.     Periodic re-annealing?
 .false.      Isotropic barostat? 10000.d0 0.0d0
 .false.     Anisotropic barostat?

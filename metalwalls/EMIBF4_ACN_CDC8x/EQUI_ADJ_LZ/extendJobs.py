@@ -36,6 +36,7 @@ for subdir, dirs, files in os.walk(rootdir):
 		elif ACN=="40ACN":
 			numSteps = int(74.07*pow(cores,0.842)*(float(walltime)-0.1))
 		#numSteps = int(numSteps*0.9)
+		#numSteps = 50
 		pbsoutfile = os.path.join(ap,"job.pbs")
 		
 		#CHANGE INTEGRATION STEPS IN runtime.inpt
@@ -44,8 +45,8 @@ for subdir, dirs, files in os.walk(rootdir):
 			runtimeData=runtimeFile.readlines()
 		runtimeData[0]=str(numSteps) + "      Number of steps in the run.\n"
 		#runtimeData[-10] = "10\n"
-		runtimeData[-2] = "shaketol 1e-8\n"
-		runtimeData[-1] = "maxshakeiter 100"
+		#runtimeData[-11] = ".true.      Periodic rescale of temperature?\n"
+		#runtimeData.insert(-10,"100\n")
 		with open(rinpt,'w') as runtimeFile:
 			runtimeFile.writelines(runtimeData) 
 		print "Set " + str(numSteps) + " steps in file " + rinpt

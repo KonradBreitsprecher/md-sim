@@ -12,10 +12,6 @@ puts "$startMsgB\n$startMsgB\n\n$startMsg\n\n$startMsgB\n$startMsgB"
 #Stopwatch
 set start_time [expr 1.0*[clock clicks -milliseconds]]
 
-#Real runtime
-set hours 8
-set wall_time [expr $hours*3600.0]
-
 #Seed
 for {set i 0} {$i < 24} {incr i} {
    lappend pIDs [pid]
@@ -24,24 +20,33 @@ for {set i 0} {$i < 24} {incr i} {
 t_random seed 
 #---------------------------------------------------------
 #-------------------------------INPUT--------------------------------
-#---------------------------------------------------------
 
-puts "\nArguments: voltage(V) cdcInput_path output_path \[checkpoint\]"
+puts "ARGS: WALLTIME VOLTAGE PATH_LEFT_ELECTRODE PATH_RIGHT_ELECTRODE EXTERNAL_POTENTIAL DATA_OUTPUT"
+
+#ARG0: WALLTIME
+set hours [lindex $argv 0] 
+set wall_time [expr $hours*3600.0]
 
 #ARG1: VOLTAGE
-set UBat_V [lindex $argv 0]
+set UBat_V [lindex $argv 1]
 
-#ARG2: PATH TO CDC-DATA
-#set pathToCDC [lindex $argv 1]
+#ARG2: PATH TO LEFT ELECTRODE
+set left_electrode [lindex $argv 2]
 
-#ARG3: OUTPUT PATH
-set path [lindex $argv 1]
+#ARG3: PATH TO RIGHT ELECTRODE
+set right_electrode [lindex $argv 3]
 
-#ARG4: PATH TO CHECKPOINT
+#ARG4: EXTERNAL POTENTIAL INPUT/OUTPUT PATH
+set ext_pot_path [lindex $argv 4]
+
+#ARG5: DATA OUTPUT PATH
+set path [lindex $argv 5]
+
+#ARG6: PATH TO CHECKPOINT
 set useCheckpoint "no"
-if {$argc == 4} {
+if {$argc == 7} {
 	set useCheckpoint "yes"
-	set pathToCheckpoint [lindex $argv 3]
+	set pathToCheckpoint [lindex $argv 6]
 } else {
 	set restarts 0
 }
@@ -55,7 +60,7 @@ file mkdir $path
 
 set box_x 40
 set box_y 40
-set box_z 130
+set box_z 150
 
 set gap [expr 0.0*$box_z]
 set box_z_tot [expr $gap+$box_z]
@@ -130,7 +135,7 @@ set wall_type  6
 #---------------------------------------------------------
 
 #Ion numbers
-set n_ion [expr 200]
+set n_ion [expr 335]
 set n_part [expr 2*$n_ion ]
 
 #---------------------------------------------------------
@@ -261,17 +266,23 @@ global icc_areas icc_normals icc_epsilons icc_sigmas
 
 set UBat [expr $UBat_V/0.01036427]
 
-set stl_files [list "/home/konrad/git/md-sim/espresso/Upore/left_electrode.stl" "/home/konrad/git/md-sim/espresso/Upore/right_electrode.stl"]
-set pots [list 0 $UBat]
+set stl_files [list $left_electrode $right_electrode]
+set pots [list [expr -$UBat*0.5] [expr $UBat*0.5]]
 set types [list $icc_wall_type $icc_wall_type]
 #set bins [list 100 100 150]
-set bins [list 80 80 260]
+set bins_per_angstrom 10
+#set bins [list [expr $box_x*$bins_per_angstrom] [expr $box_y*$bins_per_angstrom] [expr $box_z*$bins_per_angstrom]]
+set bins [list [expr $box_x*$bins_per_angstrom] 1 [expr $box_z*$bins_per_angstrom]]
 #puts [meshToParticles [lindex $stl_files 0] 0 [lindex $types 0]]
 #puts [meshToParticles [lindex $stl_files 1] [setmd n_part] [lindex $types 1]]
-puts [mesh_capacitor_icc 0 $stl_files $pots $types $bins] 
+set num_particles [mesh_capacitor_icc 0 $stl_files $pots $types $bins $ext_pot_path] 
 
 set iccParticles [setmd n_part]
-set iccParticlesLeft 1616 
+set iccParticlesLeft [lindex $num_particles 0]
+set iccParticlesRight [lindex $num_particles 1]
+puts "ICC PARTS LEFT: $iccParticlesLeft"
+puts "ICC PARTS RIGHT: $iccParticlesRight"
+
 # [expr int($iccParticles/2)]
 
 for {set i 0} {$i < $iccParticles} {incr i} { 
@@ -309,7 +320,7 @@ set cationlist ""
 set oriList ""
 
 set partSpawnL 52
-set partSpawnR 74
+set partSpawnR 94
 set partSpawnW [expr $partSpawnR-$partSpawnL]
 
 #ANIONS
@@ -576,12 +587,12 @@ correlation $corr_cation_c1_id autoupdate start
 correlation $corr_cation_c2_id autoupdate start
 correlation $corr_cation_c3_id autoupdate start
 
-set obs_schargeL [open "$path/s_charge_L.dat" "w"]
-set obs_schargeR [open "$path/s_charge_R.dat" "w"]
-set obs_schargeL_t [open "$path/s_charge_t_all_L.dat" "w"]
-set obs_schargeR_t [open "$path/s_charge_t_all_R.dat" "w"]
-set obs_traj [open "$path/trajectory.vtf" "w"]
-set obs_energy [open "$path/energy.dat" "w"]
+set obs_schargeL [open "$path/s_charge_L.dat" "a"]
+set obs_schargeR [open "$path/s_charge_R.dat" "a"]
+set obs_schargeL_t [open "$path/s_charge_t_all_L.dat" "a"]
+set obs_schargeR_t [open "$path/s_charge_t_all_R.dat" "a"]
+set obs_traj [open "$path/trajectory.vtf" "a"]
+set obs_energy [open "$path/energy.dat" "a"]
 
 #Write structure+icc coords on first run 
 if {$useCheckpoint == "no" } {
@@ -626,7 +637,7 @@ while {1} {
 	set cl "$md_time_ns $iccChargeLeft"
 	puts $obs_schargeL $cl
 	flush $obs_schargeL
-	puts "Charge left $cl"
+	puts "Charge left $iccChargeLeft"
 	puts $obs_schargeL_t $charges
 
 	set iccChargeRight 0
@@ -643,7 +654,7 @@ while {1} {
 	set cr "$md_time_ns [expr $iccChargeRight]"
 	puts $obs_schargeR $cr 
 	flush $obs_schargeR
-	puts "Charge right $cr"
+	puts "Charge right $iccChargeRight"
 	puts $obs_schargeR_t $charges
 
 	puts $obs_energy [analyze energy]
