@@ -3,7 +3,7 @@ cd /work/konrad/POROUS/hornetData/PRODUCTION/
 for syst in */ ; do
 	av_wallq=${syst}av_wallq.out
 	rm $av_wallq
-	for run in 6 7 8; do
+	for run in 1 6 7 8 9 10 11 12 13 14 15 16 17 18; do
 		d=$syst$run
 		fname="$d/wall_q_from_run.out"
 		rm $fname

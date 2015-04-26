@@ -1,8 +1,28 @@
-1
-/local/home/konrad/simdata/PRODUCTION/Analysis/DistanceToCarbon/0ACN_pos/positions.out
-627
+11
+/work/konrad/POROUS/processedData/position_out/340K_0ACN_1V/6/positions.out
+1556
+/work/konrad/POROUS/processedData/position_out/340K_0ACN_1V/7/positions.out
+3320
+/work/konrad/POROUS/processedData/position_out/340K_0ACN_1V/8/positions.out
+684
+/work/konrad/POROUS/processedData/position_out/340K_0ACN_1V/9/positions.out
+1562
+/work/konrad/POROUS/processedData/position_out/340K_0ACN_1V/10/positions.out
+1644
+/work/konrad/POROUS/processedData/position_out/340K_0ACN_1V/11/positions.out
+1474
+/work/konrad/POROUS/processedData/position_out/340K_0ACN_1V/12/positions.out
+1550
+/work/konrad/POROUS/processedData/position_out/340K_0ACN_1V/13/positions.out
+1700
+/work/konrad/POROUS/processedData/position_out/340K_0ACN_1V/14/positions.out
+1437
+/work/konrad/POROUS/processedData/position_out/340K_0ACN_1V/15/positions.out
+1399
+/work/konrad/POROUS/processedData/position_out/340K_0ACN_1V/16/positions.out
+1349
+2000
 100
-500
 surf_points.out
 82.541347382399636 82.541347382399636 280.77250073399978
 5 4
@@ -12,4 +32,4 @@ surf_points.out
 600
 7642
 25.0 100
-0 80
+0 85
