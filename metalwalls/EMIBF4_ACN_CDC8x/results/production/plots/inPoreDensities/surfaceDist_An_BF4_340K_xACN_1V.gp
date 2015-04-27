@@ -12,8 +12,8 @@ set xl 'Distance from surface [A]'
 set yl 'Density [bohr^-3]'
 
 p \
-dl0.'surface_density.out0' u ($1/1.8897):2 w lp t 'Anode - BF4 in-pore profile 340K 0ACN 1V',\
-dl10.'surface_density.out0' u ($1/1.8897):2 w lp t 'Anode - BF4 in-pore profile 340K 10ACN 1V',\
-dl20.'surface_density.out0' u ($1/1.8897):2 w lp t 'Anode - BF4 in-pore profile 340K 20ACN 1V',\
-dl40.'surface_density.out0' u ($1/1.8897):2 w lp t 'Anode - BF4 in-pore profile 340K 40ACN 1V'
+dl0.'surface_density.out1' u ($1/1.8897):2 w lp t 'Anode - BF4 in-pore profile 340K 0ACN 1V',\
+dl10.'surface_density.out1' u ($1/1.8897):2 w lp t 'Anode - BF4 in-pore profile 340K 10ACN 1V',\
+dl20.'surface_density.out1' u ($1/1.8897):2 w lp t 'Anode - BF4 in-pore profile 340K 20ACN 1V',\
+dl40.'surface_density.out1' u ($1/1.8897):2 w lp t 'Anode - BF4 in-pore profile 340K 40ACN 1V'
 
