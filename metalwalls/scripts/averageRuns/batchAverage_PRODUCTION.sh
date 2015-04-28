@@ -1,4 +1,4 @@
-python averageRuns.py /work/konrad/POROUS/hornetData/PRODUCTION/340K_0ACN_1V/  6 7 8 9 10 11 12 13 14 15 16 17 18 ~/git/md-sim/metalwalls/EMIBF4_ACN_CDC8x/results/production/data/densities/AV_340K_0ACN_1V/
-python averageRuns.py /work/konrad/POROUS/hornetData/PRODUCTION/340K_10ACN_1V/ 6 7 8 9 10 11 12 13 14 15 16 17 18 ~/git/md-sim/metalwalls/EMIBF4_ACN_CDC8x/results/production/data/densities/AV_340K_10ACN_1V/
-python averageRuns.py /work/konrad/POROUS/hornetData/PRODUCTION/340K_20ACN_1V/ 6 7 8 9 10 11 12 13 14 15 16 17 18 ~/git/md-sim/metalwalls/EMIBF4_ACN_CDC8x/results/production/data/densities/AV_340K_20ACN_1V/
-python averageRuns.py /work/konrad/POROUS/hornetData/PRODUCTION/340K_40ACN_1V/ 6 7 8 9 10 11 12 13 14 15 16 17 18 ~/git/md-sim/metalwalls/EMIBF4_ACN_CDC8x/results/production/data/densities/AV_340K_40ACN_1V/
+python averageRuns.py /work/konrad/POROUS/hornetData/PRODUCTION/340K_0ACN_1V/  6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 ~/git/md-sim/metalwalls/EMIBF4_ACN_CDC8x/results/production/data/densities/AV_340K_0ACN_1V/
+python averageRuns.py /work/konrad/POROUS/hornetData/PRODUCTION/340K_10ACN_1V/ 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 ~/git/md-sim/metalwalls/EMIBF4_ACN_CDC8x/results/production/data/densities/AV_340K_10ACN_1V/
+python averageRuns.py /work/konrad/POROUS/hornetData/PRODUCTION/340K_20ACN_1V/ 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20~/git/md-sim/metalwalls/EMIBF4_ACN_CDC8x/results/production/data/densities/AV_340K_20ACN_1V/
+python averageRuns.py /work/konrad/POROUS/hornetData/PRODUCTION/340K_40ACN_1V/ 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 ~/git/md-sim/metalwalls/EMIBF4_ACN_CDC8x/results/production/data/densities/AV_340K_40ACN_1V/

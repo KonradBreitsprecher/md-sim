@@ -3,7 +3,7 @@ cd /work/konrad/POROUS/hornetData/PRODUCTION/
 for syst in */ ; do
 	av_wallq=${syst}av_wallq.out
 	rm $av_wallq
-	for run in 1 6 7 8 9 10 11 12 13 14 15 16 17 18; do
+	for run in 1 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21; do
 		d=$syst$run
 		fname="$d/wall_q_from_run.out"
 		rm $fname
@@ -18,3 +18,8 @@ for syst in */ ; do
 	done
 	echo "Written $av_wallq"
 done
+
+cp /work/konrad/POROUS/hornetData/PRODUCTION/340K_0ACN_1V/av_wallq.out ~/git/md-sim/metalwalls/EMIBF4_ACN_CDC8x/results/production/data/AV_340K_0ACN_1V/av_wallq.out
+cp /work/konrad/POROUS/hornetData/PRODUCTION/340K_10ACN_1V/av_wallq.out ~/git/md-sim/metalwalls/EMIBF4_ACN_CDC8x/results/production/data/AV_340K_10ACN_1V/av_wallq.out
+cp /work/konrad/POROUS/hornetData/PRODUCTION/340K_20ACN_1V/av_wallq.out ~/git/md-sim/metalwalls/EMIBF4_ACN_CDC8x/results/production/data/AV_340K_20ACN_1V/av_wallq.out
+cp /work/konrad/POROUS/hornetData/PRODUCTION/340K_40ACN_1V/av_wallq.out ~/git/md-sim/metalwalls/EMIBF4_ACN_CDC8x/results/production/data/AV_340K_40ACN_1V/av_wallq.out
