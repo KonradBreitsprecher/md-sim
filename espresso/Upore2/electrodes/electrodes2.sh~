@@ -1,0 +1,31 @@
+#!/bin/bash
+# electrode parameters
+w=8  #Pore width
+d=40 #Pore depth
+e1=4 #Edge radius pore exit
+e2=2 #Edge radius pore floor
+b=25 #Embedded plane edge length
+rim=10 #Rim
+gap=50 #Gap between electrodes
+
+
+#ARGS: LEFT_ELECTRODE RIGHT_ELECTRODE LEFT_WALL RIGHT_WALL
+#path to save
+path='output'
+
+
+
+#left wall
+sed "s/width/$w/; s/depth/$d/; s/edge_radius1/$e1/; s/edge_radius2/$e2/; s/plane_length/$b/; s/rim_replace/$rim/; s/l_replace/$l/; s/gap_replace/$gap/; s/path/$path/" $1 > $1.temp
+gmsh $1.temp -clscale 2.5 -algo front2d
+
+
+rm *.temp
+
+#PID=$!
+#sleep 1
+#kill $PID
+
+
+
+

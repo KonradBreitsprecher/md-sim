@@ -1,4 +1,4 @@
-set term x11 0
+#set term x11 0
 set xl 'z [nm]'
 set yl 'Density [kg/m^3]'
 
