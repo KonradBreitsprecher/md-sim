@@ -455,7 +455,7 @@ for {set i 0} {$i < $iccParticles} {incr i} {
 	lappend icclist $i
 }
 
-set fudge_slit 6.5
+set fudge_slit 9
 set cc_guess [expr $pore_surface*$epsilon_0*$UBat/$pore_gap*$fudge_slit / (0.5*$iccParticles)]
 puts "Guessed total charge: [expr $cc_guess * 0.5 * $iccParticles]"
 
