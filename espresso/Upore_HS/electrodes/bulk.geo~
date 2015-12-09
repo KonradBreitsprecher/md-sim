@@ -1,0 +1,29 @@
+//Parameters
+
+w = 13;  //Pore width
+e1 = 4; //Edge radius pore exit
+e2 = 2; //Edge radius pore floor
+b = 25; //Embedded plane edge length/ slit length
+rim = 10; //rim till start of circle
+gap = 50; //Gap between electrodes
+
+width = w+2*rim+2*e1;
+
+//Create line shape
+Point(1) = {0, 0, 0};
+Point(2) = {width,0,0};
+Line(1) = {1, 2};
+Point(3) = {0, 0, gap};
+Point(4) = {width,0,gap};
+Line(2) = {3, 4};
+
+//Extrude
+Extrude {0, b, 0} {
+  Line{1, 2};
+}
+
+Reverse Surface {10};
+
+Mesh.Format = 27;
+Mesh 3;
+Save Sprintf('bulk/bulk_pw_%g.stl',w);

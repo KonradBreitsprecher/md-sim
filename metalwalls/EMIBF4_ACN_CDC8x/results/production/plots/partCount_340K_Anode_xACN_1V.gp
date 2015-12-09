@@ -4,7 +4,7 @@ set xl 'Acetonitrile concentration $\mathrm{[\% \ mass]}$'
 set yl 'Average particle count in pores'
 
 set autos
-set yr [0:260]
+set yr [0:300]
 
 set key left Left width -1 
 

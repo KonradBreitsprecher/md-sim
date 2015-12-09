@@ -23,6 +23,6 @@ p \
 dl0.'surface_density.out1'  ev :::0::0 u (($1+10.39)/1.8897-2.749):($2*6.7483345) w lp ls 1 lw 5 t 'Anode - BF4 $0 \%$ ACN 1V',\
 dl10.'surface_density.out1' ev :::0::0 u (($1+10.39)/1.8897-2.749):($2*6.7483345) w lp ls 2 lw 5 t 'Anode - BF4 $10 \%$ ACN 1V',\
 dl20.'surface_density.out1' ev :::0::0 u (($1+10.39)/1.8897-2.749):($2*6.7483345) w lp ls 3 lw 5 t 'Anode - BF4 $20 \%$ ACN 1V',\
-dl40.'surface_density.out1' ev :::0::0 u (($1+10.39)/1.8897-2.749):($2*6.7483345) w lp ls 4 lw 5 t 'Anode - BF4 $40 \%$ ACN 1V',\
+dl40.'surface_density.out1' ev :::0::36 u (($1+10.39)/1.8897-2.749):($2*6.7483345) w lp ls 4 lw 5 t 'Anode - BF4 $40 \%$ ACN 1V',\
 dl67.'surface_density.out1' ev :::0::0 u (($1+10.39)/1.8897-2.749):($2*6.7483345) w lp ls 5 lw 5 t 'Anode - BF4 $67 \%$ ACN 1V'
 

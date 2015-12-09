@@ -1,0 +1,21 @@
+//Parameters
+
+gap = 120; //Gap between electrodes
+width = 31;
+b=31;
+
+//Create line shape
+Point(1) = {0, 0, gap};
+Point(2) = {width,0,gap};
+Line(1) = {1, 2};
+
+//Extrude
+Extrude {0, b, 0} {
+  Line{1, 2};
+}
+
+Reverse Surface {5};
+
+Mesh.Format = 27;
+Mesh 3;
+Save Sprintf('bulk/r_e_g120.stl');
